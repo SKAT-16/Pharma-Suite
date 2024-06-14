@@ -1,0 +1,19 @@
+p {
+  margin: 0px;
+}
+body {
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+  padding-left: 256px;
+  padding-top: 60px;
+  background-color: #edf2f4;
+  white-space: nowrap;
+  margin-bottom: 50px;
+}
+svg {
+  margin: 0px;
+}
+h1 {
+  margin: 0px;
+  font-size: 24px;
+}

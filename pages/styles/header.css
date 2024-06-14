@@ -1,0 +1,89 @@
+header {
+  background-color: #f7fafd;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  justify-content: space-between;
+  z-index: 2;
+  right: 0;
+  left: 256px;
+  top: 0;
+}
+.header-left svg {
+  width: 14px;
+  height: 14px;
+}
+.header-left input {
+  width: 400px;
+  height: 15px;
+  margin-left: 35px;
+  padding: 10px 20px;
+  background-color: #edf2f4;
+  border: none;
+}
+.header-left input::placeholder {
+  font-size: 12px;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.header-right {
+  position: relative;
+  margin-right: 35px;
+}
+.count {
+  background-color: red;
+  display: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7px;
+  position: absolute;
+  bottom: 4px;
+  right: -5px;
+}
+.header-right svg {
+  height: 25px;
+  width: 25px;
+  color: #a1a1a1;
+}
+.list-header-right svg {
+  height: 25px;
+  width: 25px;
+  color: #a1a1a1;
+}
+.list-header-right {
+  display: flex;
+  position: relative;
+}
+.tooltip {
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  bottom: -170px;
+  left: -80px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.tooltip-row {
+  padding: 15px 30px;
+  text-align: center;
+  border-bottom: 1px solid #b9b9b9;
+}
+.menu:hover .tooltip {
+  opacity: 1;
+}
+.menu {
+  cursor: pointer;
+}
+button {
+  padding: 9px 15px;
+  margin-left: -1px;
+  background-color: #edf2f4;
+  border: none;
+}
