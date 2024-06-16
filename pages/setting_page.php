@@ -287,7 +287,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
   <div class="title">Setting</div>
   <div class="pic-info-div">
     <div class="pic-div" id="imageUploadDiv">
-      <img src="<?php echo $employee['profile_pic']; ?>" alt="" />
+      <?php
+      $src =  $employee['profile_pic'] != "" ? $employee['profile_pic'] : './assets/default.png';
+      echo "<img src='$src' alt='' />"
+      ?>
     </div>
     <div class="info">
       <table id="dataTable" cellspacing="10">
@@ -295,7 +298,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
           <td>Name</td>
           <td><?php echo $employee['fullname']; ?></td>
         </tr>
-
         <tr>
           <td>Username</td>
           <td><?php echo $employee['username']; ?></td>
