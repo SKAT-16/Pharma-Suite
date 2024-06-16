@@ -1,18 +1,22 @@
 .contain-dash {
   padding: 30px;
 }
+
 .contain-dash p {
   margin-top: 10px;
   font-size: 14px;
 }
+
 .card svg {
   width: 45px;
   height: 45px;
 }
+
 .lower-main {
   background-color: white;
   padding-top: 10px;
 }
+
 .card {
   display: flex;
   flex-direction: column;
@@ -21,6 +25,7 @@
   padding: 30px;
   border: 3px solid #8d99ae;
 }
+
 .card-container {
   display: flex;
   align-items: center;
@@ -32,18 +37,23 @@
   font-size: 20px;
   font-weight: bold;
 }
+
 .card p {
   margin-top: 10px;
 }
+
 .activity {
   font-size: 14px;
 }
+
 .error svg {
   color: #f66158;
 }
+
 .error {
   border-color: #f66158;
 }
+
 .dashboard-table {
   margin: 30px 30px 0px 30px;
   width: 95%;
@@ -58,27 +68,32 @@
   font-size: 16px;
   font-weight: 600;
 }
+
 .dashboard-table td {
   padding-left: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 .list-row1 {
-  padding: 10px 50px;
+  padding: 10px 40px;
+  text-align: center;
   font-size: 16px;
   background-color: #7a8495;
   color: white;
   opacity: 0.5;
 }
+
 .list-row {
   font-size: 14px;
   transition: all .2s ease;
 }
+
 .list-row:hover {
   scale: 1.03;
-  outline: solid 1px gray;
-  border-radius: 10px;
+  font-weight: 700;
 }
+
 .list-cells {
   background-color: white;
   text-align: center;
@@ -86,6 +101,7 @@
   overflow: hidden;
   cursor: pointer;
 }
+
 .expired {
   color: red;
   font-weight: 600;
@@ -95,28 +111,34 @@
   display: flex;
   justify-content: center;
 }
+
 .list-table {
-  width: 90%;
+  max-width: 90%;
   margin-top: 10px;
 }
+
 label {
   font-size: 20px;
 }
+
 .addsupplier-main {
   margin-left: 70px;
   margin-top: 40px;
 }
+
 .addsupplier-title {
   font-size: 36px;
   font-weight: 500px;
   margin-bottom: 50px;
 }
+
 .addsupplier-input {
   margin-bottom: 20px;
   width: 373px;
   height: 36px;
   margin-top: 20px;
 }
+
 #save,
 #cancel {
   background-color: #2b2d42;
@@ -126,12 +148,14 @@ label {
   border: none;
   margin-right: 30px;
 }
+
 .button-container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 50px;
 }
+
 textarea {
   margin-top: 20px;
 }
