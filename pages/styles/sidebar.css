@@ -8,6 +8,7 @@ nav {
   left: 0;
 }
 .nav-box {
+  text-decoration: none;
   display: flex;
   width: 216px;
   align-items: center;
@@ -16,6 +17,12 @@ nav {
   cursor: pointer;
   transition: background-color 0.15s;
 }
+
+.nav-box, .nav-box:link, .nav-box:visited, .nav-box:hover, .nav-box:active {
+  text-decoration: none;
+  color: white;
+}
+
 .nav-box:active {
   background-color: #7a8495;
 }

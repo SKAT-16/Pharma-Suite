@@ -1,9 +1,12 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 p {
   margin: 0px;
 }
 body {
   margin: 0px;
-  font-family: "Poppins", sans-serif;
   padding-left: 256px;
   padding-top: 60px;
   background-color: #edf2f4;

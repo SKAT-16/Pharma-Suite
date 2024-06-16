@@ -61,7 +61,7 @@
       </div>
       <div class="real-nav">
         <div class="upper-nav">
-          <div class="nav-box">
+          <a href="/pharma-suite/pages/dashboard_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -77,8 +77,8 @@
               />
             </svg>
             <div>Dashboard</div>
-          </div>
-          <div class="nav-box">
+          </a>
+          <a  href="/pharma-suite/pages/medicine_list_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -94,8 +94,8 @@
               />
             </svg>
             <div>Medicine list</div>
-          </div>
-          <div class="nav-box">
+          </a>
+          <a href="/pharma-suite/pages/supplier_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -111,9 +111,9 @@
               />
             </svg>
             <div>Suppliers</div>
-          </div>
+          </a>
 
-          <div class="nav-box">
+          <a href="/pharma-suite/pages/employee_list_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -129,8 +129,8 @@
               />
             </svg>
             <div>Employees</div>
-          </div>
-          <div class="nav-box">
+          </a>
+          <a href="/pharma-suite/pages/category_list_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -146,10 +146,10 @@
               />
             </svg>
             <div>Categories</div>
-          </div>
+          </a>
         </div>
         <div class="nav-bottom">
-          <div class="nav-box">
+          <a href="/pharma-suite/pages/setting_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -170,7 +170,7 @@
               />
             </svg>
             <div>Settings</div>
-          </div>
+          </a>
         </div>
       </div>
     </nav>
@@ -233,10 +233,10 @@
       <table cellspacing="3" class="list-table">
         <tr>
           <td class="list-row1">Name</td>
-          <td class="list-row1">Position</td>
-          <td class="list-row1">Phone number</td>
-          <td class="list-row1">Email</td>
-          <td class="list-row1">Salary</td>
+          <td class="list-row1">Catagory</td>
+          <td class="list-row1">Expiration date</td>
+          <td class="list-row1">Quantity</td>
+          <td class="list-row1">Unit Price</td>
         </tr>
         <tr>
           <td class="list-cells">Name</td>

@@ -125,7 +125,7 @@
       </div>
       <div class="real-nav">
         <div class="upper-nav">
-          <div class="nav-box">
+          <a href="/pharma-suite/pages/dashboard_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -141,8 +141,8 @@
               />
             </svg>
             <div>Dashboard</div>
-          </div>
-          <div class="nav-box">
+          </a>
+          <a  href="/pharma-suite/pages/medicine_list_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -158,8 +158,8 @@
               />
             </svg>
             <div>Medicine list</div>
-          </div>
-          <div class="nav-box">
+          </a>
+          <a href="/pharma-suite/pages/supplier_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -175,9 +175,9 @@
               />
             </svg>
             <div>Suppliers</div>
-          </div>
+          </a>
 
-          <div class="nav-box">
+          <a href="/pharma-suite/pages/employee_list_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -193,8 +193,8 @@
               />
             </svg>
             <div>Employees</div>
-          </div>
-          <div class="nav-box">
+          </a>
+          <a href="/pharma-suite/pages/category_list_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -210,10 +210,10 @@
               />
             </svg>
             <div>Categories</div>
-          </div>
+          </a>
         </div>
         <div class="nav-bottom">
-          <div class="nav-box">
+          <a href="/pharma-suite/pages/setting_page.php" class="nav-box">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -234,7 +234,7 @@
               />
             </svg>
             <div>Settings</div>
-          </div>
+          </a>
         </div>
       </div>
     </nav>
