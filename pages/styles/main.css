@@ -70,17 +70,33 @@
   color: white;
   opacity: 0.5;
 }
-td {
-  background-color: White;
+.list-row {
+  font-size: 14px;
+  transition: all .2s ease;
+}
+.list-row:hover {
+  scale: 1.03;
+  outline: solid 1px gray;
+  border-radius: 10px;
 }
 .list-cells {
-  padding: 25px 55px;
+  background-color: white;
+  text-align: center;
+  padding: 25px 10px;
+  overflow: hidden;
+  cursor: pointer;
 }
+.expired {
+  color: red;
+  font-weight: 600;
+}
+
 .list-main {
   display: flex;
   justify-content: center;
 }
 .list-table {
+  width: 90%;
   margin-top: 10px;
 }
 label {

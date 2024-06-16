@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/database/setup_conn.php"; // Adjust this to your database connection script
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/database/setup_conn.php";
 
 // Medicine Sales Today (Total Number of Medicines Sold)
 $sql = "SELECT SUM(quantity) AS total_medicines_sold

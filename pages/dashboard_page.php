@@ -319,7 +319,7 @@ include $_SERVER['DOCUMENT_ROOT']. "/pharma-suite/controllers/dashboard/dashboar
             <td colspan="2" class="row1">Quick Report</td>
           </tr>
           <tr>
-            <td class="amount"><?php echo "$total_medicines_sold"; ?></td>
+            <td class="amount"><?php echo "$total_medicine_sold"; ?></td>
             <td class="amount"><?php echo "$total_medicine_in_stock"; ?></td>
           </tr>
           <tr>
