@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/medicine-list/retrieve-list.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/transaction-list/retrieve-list.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -103,28 +103,30 @@ session_start();
     </form>
   </header>
   <main class="list-main">
-    <table cellspacing="3">
+    <table cellspacing="3" class="list-table">
       <tr>
-        <td class="list-row1">Name</td>
-        <td class="list-row1">Catagory</td>
-        <td class="list-row1">Expiration date</td>
+        <td class="list-row1">Medication</td>
+        <td class="list-row1">Employee</td>
+        <td class="list-row1">Customer/Supplier</td>
         <td class="list-row1">Quantity</td>
         <td class="list-row1">Unit Price</td>
-        <td class="list-row1">Actions</td>
+        <td class="list-row1">Date</td>
+        <td class="list-row1">Transaction Type</td>
+        <td class="list-row1">Action</td>
       </tr>
       <?php
-      foreach ($medicines as $key => $row) {
+      foreach ($transactions as $key => $row) {
         echo "
               <tr class='list-row'>
-                  <td class='list-cells'>" . $row['name'] . "</td>
-                  <td class='list-cells'>" . $row['category_name'] . "</td>
-                  <td class='list-cells " . ($row['expiry_date'] < date('Y-m-d') ? 'expired' : '') . "'>
-                      " . $row['expiry_date'] . "
-                  </td>
-                  <td class='list-cells'>" . $row['stock_quantity'] . "</td>
+                  <td class='list-cells'>" . $row['medication_name'] . "</td>
+                  <td class='list-cells'>" . $row['employee_name'] . "</td>
+                  <td class='list-cells'>" . ($row['customer_name'] != "" ? $row['customer_name'] : $row['supplier_name']) . "</td>
+                  <td class='list-cells'>" . $row['quantity'] . "</td>
                   <td class='list-cells'>" . $row['unit_price'] . "</td>
-                  <td class='action-btn'><a href='./medicine_sale_page.php'>Sale</a></td>
-                  <td class='action-btn' style='background-color: #55cc55'><a href='./medicine_sale_page.php?med=" . $row['id'] . "'>Edit</a></td>
+                  <td class='list-cells'>" . $row['transaction_date'] . "</td>
+                  <td class='list-cells'>" . $row['transaction_type'] . "</td>
+                  <td class='action-btn' style='background-color: #55cc55'><a href='./medicine_sale_page.php'>Edit</a></td>
+                  <td class='action-btn' style='background-color: #cc5555'><a href='./medicine_sale_page.php?med=" . $row['id'] . "'>Delete</a></td>
               </tr>
           ";
       }

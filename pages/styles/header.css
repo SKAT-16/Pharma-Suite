@@ -7,8 +7,15 @@ header {
   justify-content: space-between;
   z-index: 2;
   right: 0;
-  left: 256px;
+  left: 17%;
   top: 0;
+}
+
+.header-left button {
+  background-color: #edf2f4;
+  margin: -45px;
+  padding: 5px 10px;
+  border: none;
 }
 
 .header-left svg {
@@ -66,38 +73,17 @@ header {
 
 .list-header-right {
   display: flex;
-  position: relative;
+  gap: 20px;
+  margin: 0 20px;
 }
 
-.tooltip {
-  background-color: white;
-  border-radius: 10px;
-  position: absolute;
-  bottom: -170px;
-  left: -80px;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s;
+.list-header-right a {
+  text-decoration: none;
+  color: gray;
+  transition: all .2s;
 }
 
-.tooltip-row {
-  padding: 15px 30px;
-  text-align: center;
-  border-bottom: 1px solid #b9b9b9;
-}
-
-.menu:hover .tooltip {
-  opacity: 1;
-}
-
-.menu {
-  cursor: pointer;
-}
-
-button {
-  padding: 9px 15px;
-  margin-left: -1px;
-  background-color: #edf2f4;
-  border: none;
+.list-header-right a:hover {
+  color: black;
+  scale: 1.05;
 }

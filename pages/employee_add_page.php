@@ -1,7 +1,3 @@
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/medicine-list/retrieve-list.php";
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,44 +89,63 @@ session_start();
     </div>
   </nav>
   <header>
-    <form action="" class="header-left">
-      <input type="text" name="query" placeholder="Search for anything here." />
-      <button type="submit">
+    <div class="header-left">
+      <input type="text" placeholder="Search for anything here." />
+      <button>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
         </svg>
       </button>
-    </form>
+    </div>
+    <div class="list-header-right">
+      <div class="filter">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+        </svg>
+      </div>
+      <div class="menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+        </svg>
+        <div class="tooltip">
+          <div class="tooltip-row">Add</div>
+          <div class="tooltip-row">Delete</div>
+          <div class="tooltip-row">Edit</div>
+        </div>
+      </div>
+    </div>
   </header>
-  <main class="list-main">
-    <table cellspacing="3">
-      <tr>
-        <td class="list-row1">Name</td>
-        <td class="list-row1">Catagory</td>
-        <td class="list-row1">Expiration date</td>
-        <td class="list-row1">Quantity</td>
-        <td class="list-row1">Unit Price</td>
-        <td class="list-row1">Actions</td>
-      </tr>
-      <?php
-      foreach ($medicines as $key => $row) {
-        echo "
-              <tr class='list-row'>
-                  <td class='list-cells'>" . $row['name'] . "</td>
-                  <td class='list-cells'>" . $row['category_name'] . "</td>
-                  <td class='list-cells " . ($row['expiry_date'] < date('Y-m-d') ? 'expired' : '') . "'>
-                      " . $row['expiry_date'] . "
-                  </td>
-                  <td class='list-cells'>" . $row['stock_quantity'] . "</td>
-                  <td class='list-cells'>" . $row['unit_price'] . "</td>
-                  <td class='action-btn'><a href='./medicine_sale_page.php'>Sale</a></td>
-                  <td class='action-btn' style='background-color: #55cc55'><a href='./medicine_sale_page.php?med=" . $row['id'] . "'>Edit</a></td>
-              </tr>
-          ";
-      }
-      ?>
-    </table>
-  </main>
+  <div class="addsupplier-main">
+    <h1 class="addsupplier-title">Add new Employee</h1>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <br />
+        <input type="text" id="name" class="addsupplier-input" />
+        <br />
+        <label for="contact">Position</label>
+        <br />
+        <input type="text" id="position" class="addsupplier-input" />
+        <br />
+        <label for="pnum">Phone Number</label>
+        <br />
+        <input type="tel" id="pnum" class="addsupplier-input" />
+        <br />
+        <label for="email">Email</label>
+        <br />
+        <input type="email" id="email" class="addsupplier-input" />
+        <br />
+        <label for="address">Salary</label>
+        <br />
+        <input type="text" id="salary" class="addsupplier-input" />
+        <br />
+      </div>
+      <div class="button-container">
+        <input type="submit" value="Save" id="save" />
+        <input type="reset" value="Cancel" id="cancel" />
+      </div>
+    </form>
+  </div>
 </body>
 
 </html>

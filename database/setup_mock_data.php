@@ -1,77 +1,98 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "") or die("Connection Failed: " . mysqli_connect_error());
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/database/setup_conn.php";
 
-mysqli_select_db($conn, "pharmacy_inventory") or die("Could not select database");
-
-// Insert mock data into Category table
+// Mock data for Category table
 $sql = "INSERT INTO Category (name, description) VALUES
-    ('Analgesics', 'Pain relief medications'),
-    ('Antibiotics', 'Medications to fight bacterial infections'),
-    ('Antivirals', 'Medications to fight viral infections'),
-    ('Antifungals', 'Medications to treat fungal infections'),
-    ('Antidepressants', 'Medications for treating depression'),
-    ('Vitamins', 'Supplements for various health benefits'),
-    ('Antihistamines', 'Medications to treat allergies'),
-    ('Anti-inflammatory', 'Medications to reduce inflammation'),
-    ('Antacids', 'Medications to neutralize stomach acid'),
-    ('Antidiabetics', 'Medications to manage diabetes')";
-$conn->query($sql) or die("Error inserting data into Category table: " . $conn->error);
+    ('Antibiotics', 'Used to treat infections'),
+    ('Pain Relief', 'Used to relieve pain'),
+    ('Vitamins', 'Used to supplement diet'),
+    ('Antidepressants', 'Used to treat depression'),
+    ('Antihistamines', 'Used to treat allergies'),
+    ('Antacids', 'Used to neutralize stomach acid'),
+    ('Anti-diabetics', 'Used to treat diabetes'),
+    ('Antifungals', 'Used to treat fungal infections'),
+    ('Vaccines', 'Used to prevent diseases'),
+    ('Antivirals', 'Used to treat viral infections')";
+$conn->prepare($sql)->execute() or die("Error inserting data into category table: " . $conn->error);
 
-// Insert mock data into Supplier table
+// Mock data for Supplier table
 $sql = "INSERT INTO Supplier (name, contact_person_name, contact_number, email, address) VALUES
-    ('MedSupplies Inc.', 'John Doe', '123-456-7890', 'johndoe@medsupplies.com', '123 Main St'),
-    ('PharmaWholesale Ltd.', 'Jane Smith', '987-654-3210', 'janesmith@pharmawholesale.com', '456 Elm St'),
-    ('Healthcare Distributors', 'Mike Brown', '555-123-4567', 'mikebrown@healthcaredistributors.com', '789 Oak St'),
-    ('Medical Supplies Co.', 'Sara Lee', '444-555-6666', 'saralee@medsuppliesco.com', '101 Pine St'),
-    ('DrugStore Wholesale', 'Tom Hanks', '333-444-5555', 'tomhanks@drugstorewholesale.com', '202 Cedar St'),
-    ('PharmaPlus Ltd.', 'Emma Watson', '222-333-4444', 'emmawatson@pharmaplus.com', '303 Birch St'),
-    ('HealthFirst Suppliers', 'Chris Evans', '111-222-3333', 'chrisevans@healthfirst.com', '404 Spruce St'),
-    ('MedDistributor Inc.', 'Robert Downey', '666-777-8888', 'robertdowney@meddistributor.com', '505 Maple St'),
-    ('Wellness Supplies', 'Scarlett Johansson', '999-000-1111', 'scarlett@wellnesssupplies.com', '606 Willow St'),
-    ('CarePlus Distributors', 'Chris Hemsworth', '888-999-0000', 'chris@careplus.com', '707 Pine St')";
-$conn->query($sql) or die("Error inserting data into Supplier table: " . $conn->error);
+    ('ABC Pharma', 'John Doe', '1234567890', 'john@abcpharma.com', '123 Street, City'),
+    ('XYZ Meds', 'Jane Smith', '0987654321', 'jane@xyzmeds.com', '456 Avenue, City'),
+    ('Global Health', 'Alice Johnson', '1122334455', 'alice@globalhealth.com', '789 Boulevard, City'),
+    ('MediCorp', 'Bob Brown', '6677889900', 'bob@medicorp.com', '101 Road, City'),
+    ('HealthPlus', 'Charlie Green', '2233445566', 'charlie@healthplus.com', '202 Drive, City'),
+    ('LifeCare', 'David Black', '3344556677', 'david@lifecare.com', '303 Lane, City'),
+    ('PharmaDirect', 'Eve White', '4455667788', 'eve@pharmadirect.com', '404 Path, City'),
+    ('Wellness Inc', 'Frank Blue', '5566778899', 'frank@wellnessinc.com', '505 Way, City'),
+    ('HealthFirst', 'Grace Yellow', '6677889900', 'grace@healthfirst.com', '606 Street, City'),
+    ('MedSupply', 'Hank Red', '7788990011', 'hank@medsupply.com', '707 Avenue, City')";
+$conn->prepare($sql)->execute() or die("Error inserting data into supplier table: " . $conn->error);
 
-// Insert mock data into Medication table
+// Mock data for Medication table
 $sql = "INSERT INTO Medication (name, description, manufacturer, strength, dosage_form, expiry_date, stock_quantity, unit_price, supplier_id, category_id) VALUES
-    ('Aspirin', 'Pain reliever and fever reducer', 'Bayer', '500mg', 'Tablet', '2024-12-31', 100, 0.10, 1, 1),
-    ('Amoxicillin', 'Antibiotic', 'GlaxoSmithKline', '250mg', 'Capsule', '2024-11-30', 150, 0.20, 2, 2),
-    ('Paracetamol', 'Pain reliever and fever reducer', 'Johnson & Johnson', '500mg', 'Tablet', '2024-10-31', 200, 0.15, 3, 1),
-    ('Ibuprofen', 'Nonsteroidal anti-inflammatory drug', 'Pfizer', '400mg', 'Tablet', '2024-09-30', 120, 0.18, 4, 8),
-    ('Cetirizine', 'Antihistamine', 'Novartis', '10mg', 'Tablet', '2024-08-31', 130, 0.12, 5, 7),
-    ('Lisinopril', 'Antihypertensive', 'Merck', '10mg', 'Tablet', '2024-07-31', 140, 0.22, 6, 10),
-    ('Simvastatin', 'Cholesterol-lowering medication', 'AstraZeneca', '20mg', 'Tablet', '2024-06-30', 160, 0.25, 7, 10),
-    ('Metformin', 'Antidiabetic medication', 'Boehringer Ingelheim', '500mg', 'Tablet', '2024-05-31', 170, 0.30, 8, 10),
-    ('Levothyroxine', 'Thyroid hormone replacement', 'AbbVie', '50mcg', 'Tablet', '2024-04-30', 180, 0.35, 9, 10),
-    ('Fluoxetine', 'Antidepressant', 'Eli Lilly', '20mg', 'Capsule', '2024-03-31', 190, 0.40, 10, 5)";
-$conn->query($sql) or die("Error inserting data into Medication table: " . $conn->error);
+    ('Amoxicillin', 'Antibiotic for infections', 'Pharma Inc', '500mg', 'Tablet', '2025-12-31', 100, 10.50, 1, 1),
+    ('Ibuprofen', 'Pain reliever', 'HealthCo', '200mg', 'Tablet', '2024-11-30', 200, 5.25, 2, 2),
+    ('Vitamin C', 'Dietary supplement', 'VitaminWorld', '1000mg', 'Tablet', '2026-01-01', 150, 8.00, 3, 3),
+    ('Sertraline', 'Antidepressant', 'Pharma Inc', '50mg', 'Tablet', '2025-09-15', 120, 12.75, 4, 4),
+    ('Loratadine', 'Allergy relief', 'HealthCo', '10mg', 'Tablet', '2024-10-10', 180, 7.50, 5, 5),
+    ('Omeprazole', 'Acid reducer', 'Pharma Inc', '20mg', 'Capsule', '2025-08-20', 160, 9.00, 6, 6),
+    ('Metformin', 'Diabetes medication', 'HealthCo', '500mg', 'Tablet', '2024-07-25', 130, 6.00, 7, 7),
+    ('Fluconazole', 'Antifungal', 'Pharma Inc', '150mg', 'Tablet', '2025-06-30', 140, 14.25, 8, 8),
+    ('Influenza Vaccine', 'Flu prevention', 'Vaccine Corp', '0.5mL', 'Injection', '2026-05-01', 50, 20.00, 9, 9),
+    ('Acyclovir', 'Antiviral', 'Pharma Inc', '400mg', 'Tablet', '2025-04-15', 110, 15.00, 10, 10)";
+$conn->prepare($sql)->execute() or die("Error inserting data into medication table: " . $conn->error);
 
-// Insert mock data into Employee table with a default password 123456
-$default_passwd = "$2y$10$DZlnn72GPjwcTlE/CVBxn.X6iQI7WpoOnojsMZndP89Hl0xkVZeZS";
+// Mock data for Employee table
 $sql = "INSERT INTO Employee (fullname, position, contact_number, salary, username, email, password, address, profile_pic, status) VALUES
-    ('Alice Johnson', 'MANAGER', '111-222-3333', 55000.00, 'alice', 'alice@example.com', '$default_passwd', '123 Maple St', NULL, 'ACTIVE'),
-    ('Bob Smith', 'EMPLOYEE', '222-333-4444', 45000.00, 'bob', 'bob@example.com', '$default_passwd', '456 Oak St', NULL, 'ACTIVE'),
-    ('Carol White', 'EMPLOYEE', '333-444-5555', 35000.00, 'carol', 'carol@example.com', '$default_passwd', '789 Pine St', NULL, 'ACTIVE'),
-    ('David Brown', 'EMPLOYEE', '444-555-6666', 47000.00, 'david', 'david@example.com', '$default_passwd', '101 Cedar St', NULL, 'INACTIVE'),
-    ('Eva Green', 'EMPLOYEE', '555-666-7777', 36000.00, 'eva', 'eva@example.com', '$default_passwd', '202 Birch St', NULL, 'ACTIVE'),
-    ('Frank Miller', 'MANAGER', '666-777-8888', 60000.00, 'frank', 'frank@example.com', '$default_passwd', '303 Spruce St', NULL, 'INACTIVE'),
-    ('Grace Lee', 'EMPLOYEE', '777-888-9999', 48000.00, 'grace', 'grace@example.com', '$default_passwd', '404 Willow St', NULL, 'ACTIVE'),
-    ('Hannah Davis', 'EMPLOYEE', '888-999-0000', 37000.00, 'hannah', 'hannah@example.com', '$default_passwd', '505 Elm St', NULL, 'ACTIVE'),
-    ('Ivan Wilson', 'EMPLOYEE', '999-000-1111', 49000.00, 'ivan', 'ivan@example.com', '$default_passwd', '606 Pine St', NULL, 'INACTIVE'),
-    ('Jackie Chan', 'EMPLOYEE', '000-111-2222', 38000.00, 'jackie', 'jackie@example.com', '$default_passwd', '707 Cedar St', NULL, 'ACTIVE')";
-$conn->query($sql) or die("Error inserting data into Employee table: " . $conn->error);
+    ('John Doe', 'Manager', '1234567890', 60000.00, 'johndoe', 'john@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '123 Main St, City', NULL, 'ACTIVE'),
+    ('Jane Smith', 'Pharmacist', '0987654321', 55000.00, 'janesmith', 'jane@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '456 Oak St, City', NULL, 'ACTIVE'),
+    ('Alice Johnson', 'Cashier', '1122334455', 30000.00, 'alicejohnson', 'alice@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '789 Pine St, City', NULL, 'INACTIVE'),
+    ('Bob Brown', 'Technician', '6677889900', 40000.00, 'bobbrown', 'bob@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '101 Maple St, City', NULL, 'ACTIVE'),
+    ('Charlie Green', 'Manager', '2233445566', 62000.00, 'charliegreen', 'charlie@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '202 Elm St, City', NULL, 'ACTIVE'),
+    ('David Black', 'Pharmacist', '3344556677', 56000.00, 'davidblack', 'david@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '303 Cedar St, City', NULL, 'INACTIVE'),
+    ('Eve White', 'Cashier', '4455667788', 31000.00, 'evewhite', 'eve@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '404 Birch St, City', NULL, 'ACTIVE'),
+    ('Frank Blue', 'Technician', '5566778899', 42000.00, 'frankblue', 'frank@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '505 Spruce St, City', NULL, 'ACTIVE'),
+    ('Grace Yellow', 'Pharmacist', '6677889900', 57000.00, 'graceyellow', 'grace@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '606 Fir St, City', NULL, 'ACTIVE'),
+    ('Hank Red', 'Cashier', '7788990011', 32000.00, 'hankred', 'hank@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '707 Ash St, City', NULL, 'INACTIVE')";
+$conn->prepare($sql)->execute() or die("Error inserting data into employee table: " . $conn->error);
 
-// Insert mock data into Transaction table
-$sql = "INSERT INTO Transaction (medication_id, employee_id, transaction_date, quantity, transaction_type, unit_price) VALUES
-    (1, 1, '2023-01-15 10:00:00', 50, 'SALE', 0.10),
-    (2, 2, '2024-01-16 11:00:00', 75, 'PURCHASE', 0.20),
-    (3, 3, '2022-01-17 12:00:00', 100, 'SALE', 0.15),
-    (4, 4, '2023-01-18 13:00:00', 60, 'SALE', 0.18),
-    (5, 5, '2024-01-19 14:00:00', 65, 'PURCHASE', 0.12),
-    (6, 6, '2024-01-20 15:00:00', 70, 'SALE', 0.22),
-    (7, 7, '2025-01-21 16:00:00', 80, 'SALE', 0.25),
-    (8, 8, '2021-01-22 17:00:00', 85, 'PURCHASE', 0.30),
-    (9, 9, '2024-01-23 18:00:00', 90, 'SALE', 0.35),
-    (10, 10, '2024-01-24 19:00:00', 95, 'SALE', 0.40)";
-$conn->query($sql) or die("Error inserting data into Transaction table: " . $conn->error);
+// Mock data for Customer table
+$sql = "INSERT INTO Customer (fullname, contact_number, email, address) VALUES
+    ('Emma Brown', '1231231234', 'emma@example.com', '123 Green St, City'),
+    ('Liam Smith', '2342342345', 'liam@example.com', '234 Blue St, City'),
+    ('Olivia Johnson', '3453453456', 'olivia@example.com', '345 Red St, City'),
+    ('Noah Williams', '4564564567', 'noah@example.com', '456 Yellow St, City'),
+    ('Ava Jones', '5675675678', 'ava@example.com', '567 Orange St, City'),
+    ('Isabella Brown', '6786786789', 'isabella@example.com', '678 Purple St, City'),
+    ('Sophia Garcia', '7897897890', 'sophia@example.com', '789 White St, City'),
+    ('Mason Martinez', '8908908901', 'mason@example.com', '890 Black St, City'),
+    ('Mia Lee', '9019019012', 'mia@example.com', '901 Pink St, City'),
+    ('James Gonzalez', '0120120123', 'james@example.com', '012 Cyan St, City')";
+$conn->prepare($sql)->execute() or die("Error inserting data into customer table: " . $conn->error);
 
-echo "Mock data inserted successfully!";
+// Mock data for Transaction table
+$sql = "INSERT INTO Transaction (medication_id, employee_id, customer_id, supplier_id, transaction_date, quantity, transaction_type, unit_price) VALUES
+    (1, 1, 1, NULL, '2024-06-16 10:00:00', 5, 'SALE', 10.50),
+    (2, 2, 2, NULL, '2024-06-16 11:00:00', 10, 'SALE', 5.25),
+    (3, 3, 3, NULL, '2024-06-16 12:00:00', 8, 'SALE', 8.00),
+    (4, 4, 4, NULL, '2024-06-16 13:00:00', 6, 'SALE', 12.75),
+    (5, 5, 5, NULL, '2024-06-16 14:00:00', 7, 'SALE', 7.50),
+    (6, 6, 6, NULL, '2024-06-16 15:00:00', 9, 'SALE', 9.00),
+    (7, 7, 7, NULL, '2024-06-16 16:00:00', 4, 'SALE', 6.00),
+    (8, 8, 8, NULL, '2024-06-16 17:00:00', 5, 'SALE', 14.25),
+    (9, 9, 9, NULL, '2024-06-16 18:00:00', 3, 'SALE', 20.00),
+    (10, 10, 10, NULL, '2024-06-16 19:00:00', 6, 'SALE', 15.00),
+    (1, 1, NULL, 1, '2024-06-15 10:00:00', 50, 'PURCHASE', 10.50),
+    (2, 2, NULL, 2, '2024-06-15 11:00:00', 100, 'PURCHASE', 5.25),
+    (3, 3, NULL, 3, '2024-06-15 12:00:00', 75, 'PURCHASE', 8.00),
+    (4, 4, NULL, 4, '2024-06-15 13:00:00', 60, 'PURCHASE', 12.75),
+    (5, 5, NULL, 5, '2024-06-15 14:00:00', 80, 'PURCHASE', 7.50),
+    (6, 6, NULL, 6, '2024-06-15 15:00:00', 90, 'PURCHASE', 9.00),
+    (7, 7, NULL, 7, '2024-06-15 16:00:00', 55, 'PURCHASE', 6.00),
+    (8, 8, NULL, 8, '2024-06-15 17:00:00', 70, 'PURCHASE', 14.25),
+    (9, 9, NULL, 9, '2024-06-15 18:00:00', 40, 'PURCHASE', 20.00),
+    (10, 10, NULL, 10, '2024-06-15 19:00:00', 65, 'PURCHASE', 15.00)";
+$conn->prepare($sql)->execute() or die("Error inserting data into transaction table: " . $conn->error);
+
+echo "Mock data insertion successful!";

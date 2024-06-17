@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/medicine-list/retrieve-list.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/supplier-list/retrieve-list.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -96,35 +96,30 @@ session_start();
     <form action="" class="header-left">
       <input type="text" name="query" placeholder="Search for anything here." />
       <button type="submit">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="background-color: transparent;">
           <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
         </svg>
       </button>
     </form>
   </header>
   <main class="list-main">
-    <table cellspacing="3">
+    <table cellspacing="3" class="list-table">
       <tr>
         <td class="list-row1">Name</td>
-        <td class="list-row1">Catagory</td>
-        <td class="list-row1">Expiration date</td>
-        <td class="list-row1">Quantity</td>
-        <td class="list-row1">Unit Price</td>
-        <td class="list-row1">Actions</td>
+        <td class="list-row1">Contact person</td>
+        <td class="list-row1">Phone number</td>
+        <td class="list-row1">Email</td>
+        <td class="list-row1">Address</td>
       </tr>
       <?php
-      foreach ($medicines as $key => $row) {
+      foreach ($suppliers as $key => $row) {
         echo "
               <tr class='list-row'>
                   <td class='list-cells'>" . $row['name'] . "</td>
-                  <td class='list-cells'>" . $row['category_name'] . "</td>
-                  <td class='list-cells " . ($row['expiry_date'] < date('Y-m-d') ? 'expired' : '') . "'>
-                      " . $row['expiry_date'] . "
-                  </td>
-                  <td class='list-cells'>" . $row['stock_quantity'] . "</td>
-                  <td class='list-cells'>" . $row['unit_price'] . "</td>
-                  <td class='action-btn'><a href='./medicine_sale_page.php'>Sale</a></td>
-                  <td class='action-btn' style='background-color: #55cc55'><a href='./medicine_sale_page.php?med=" . $row['id'] . "'>Edit</a></td>
+                  <td class='list-cells'>" . $row['contact_person_name'] . "</td>
+                  <td class='list-cells'>" . $row['contact_number'] . "</td>
+                  <td class='list-cells'>" . $row['email'] . "</td>
+                  <td class='list-cells'>" . $row['address'] . "</td>
               </tr>
           ";
       }

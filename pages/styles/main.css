@@ -1,10 +1,36 @@
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  gap: 10px;
+  background-color: #edf2f4;
+}
+
+main {
+  margin: 80px 0 20px;
+  width: 100%;
+  overflow: scroll;
+}
+
 .contain-dash {
-  padding: 30px;
+  padding: 10px 30px;
 }
 
 .contain-dash p {
   margin-top: 10px;
   font-size: 14px;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 30px 30px 30px;
 }
 
 .card svg {
@@ -13,8 +39,9 @@
 }
 
 .lower-main {
-  background-color: white;
-  padding-top: 10px;
+  padding: 10px 30px;
+  height: 100%;
+  overflow: auto;
 }
 
 .card {
@@ -24,13 +51,6 @@
   background-color: white;
   padding: 30px;
   border: 3px solid #8d99ae;
-}
-
-.card-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 30px 30px 30px;
 }
 
 .amount {
@@ -76,9 +96,9 @@
 }
 
 .list-row1 {
-  padding: 10px 40px;
+  padding: 10px 20px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #7a8495;
   color: white;
   opacity: 0.5;
@@ -89,17 +109,36 @@
   transition: all .2s ease;
 }
 
-.list-row:hover {
-  scale: 1.03;
-  font-weight: 700;
+.action-btn a,
+.action-btn a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.action-btn {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding: 10px 20px;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.action-btn {
+  background-color: #7a8495;
+  padding: 10px 15px;
 }
 
 .list-cells {
   background-color: white;
   text-align: center;
-  padding: 25px 10px;
+  padding: 15px 10px;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .expired {
@@ -110,11 +149,6 @@
 .list-main {
   display: flex;
   justify-content: center;
-}
-
-.list-table {
-  max-width: 90%;
-  margin-top: 10px;
 }
 
 label {

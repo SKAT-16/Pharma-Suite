@@ -20,13 +20,21 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
   <style>
     * {
       font-family: "Poppins", sans-serif;
+      padding: 0;
+      margin: 0;
     }
 
     body {
-      margin-left: 20px;
-      margin-bottom: 50px;
-      margin-top: 60px;
-      margin-left: 256px;
+      display: flex;
+      height: 100vh;
+      gap: 10px;
+      background-color: #edf2f4;
+    }
+
+    main {
+      margin: 80px 0 20px;
+      width: 100%;
+      overflow: scroll;
     }
 
     .title {
@@ -205,7 +213,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
 
 <body>
   <nav>
-    <div class="ptitle">Pharma</div>
+    <div class="ptitle">Pharma Suite</div>
     <div>
       <div class="acc">
         <div class="accl">
@@ -213,14 +221,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
           </svg>
           <div>
-            <div>Abel</div>
-            <div class="admin">Admin</div>
+            <div><?php echo $_SESSION['fullname']; ?></div>
+            <div class="admin"><?php echo strtolower($_SESSION['postion']); ?></div>
           </div>
         </div>
-
-        <svg class="menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
-        </svg>
       </div>
     </div>
     <div class="real-nav">
@@ -237,7 +241,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
           </svg>
           <div>Medicine list</div>
         </a>
-        <a href="/pharma-suite/pages/supplier_page.php" class="nav-box">
+        <a href="/pharma-suite/pages/supplier_list_page.php" class="nav-box">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
           </svg>
@@ -249,6 +253,19 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
           </svg>
           <div>Employees</div>
+        </a>
+
+        <a href="/pharma-suite/pages/transaction_list_page.php" class="nav-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+          </svg>
+          <div>Transactions</div>
+        </a>
+        <a href="/pharma-suite/pages/customer_list_page.php" class="nav-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+          </svg>
+          <div>Customers</div>
         </a>
         <a href="/pharma-suite/pages/category_list_page.php" class="nav-box">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -284,90 +301,92 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/controllers/settings/retrieve
       <div class="count">01</div>
     </div>
   </header>
-  <div class="title">Setting</div>
-  <div class="pic-info-div">
-    <div class="pic-div" id="imageUploadDiv">
+  <main>
+    <h1 class="title">Setting</h1>
+    <div class="pic-info-div">
+      <div class="pic-div" id="imageUploadDiv">
+        <?php
+        $src =  $employee['profile_pic'] != "" ? $employee['profile_pic'] : './assets/default.png';
+        echo "<img src='$src' alt='' />"
+        ?>
+      </div>
+      <div class="info">
+        <table id="dataTable" cellspacing="10">
+          <tr>
+            <td>Name</td>
+            <td><?php echo $employee['fullname']; ?></td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td><?php echo $employee['username']; ?></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><?php echo $employee['email']; ?></td>
+          </tr>
+          <tr>
+            <td>Contact Number</td>
+            <td><?php echo $employee['contact_number']; ?></td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td><?php echo $employee['address']; ?></td>
+          </tr>
+          <tr>
+            <td>Position*</td>
+            <td><?php echo $employee['position']; ?></td>
+          </tr>
+          <tr>
+            <td>Salary*</td>
+            <td><?php echo $employee['salary']; ?></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <hr />
+    <form action="/pharma-suite/controllers/settings/update-data.php" method="post" enctype="multipart/form-data" id="myForm">
       <?php
-      $src =  $employee['profile_pic'] != "" ? $employee['profile_pic'] : './assets/default.png';
-      echo "<img src='$src' alt='' />"
+      if (isset($_SESSION['message'])) {
+        echo "<p class='message'>" . $_SESSION['message'] . "</p>";
+        $_SESSION['message'] = "";
+      }
       ?>
-    </div>
-    <div class="info">
-      <table id="dataTable" cellspacing="10">
-        <tr>
-          <td>Name</td>
-          <td><?php echo $employee['fullname']; ?></td>
-        </tr>
-        <tr>
-          <td>Username</td>
-          <td><?php echo $employee['username']; ?></td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td><?php echo $employee['email']; ?></td>
-        </tr>
-        <tr>
-          <td>Contact Number</td>
-          <td><?php echo $employee['contact_number']; ?></td>
-        </tr>
-        <tr>
-          <td>Address</td>
-          <td><?php echo $employee['address']; ?></td>
-        </tr>
-        <tr>
-          <td>Position*</td>
-          <td><?php echo $employee['position']; ?></td>
-        </tr>
-        <tr>
-          <td>Salary*</td>
-          <td><?php echo $employee['salary']; ?></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <hr />
-  <form action="/pharma-suite/controllers/settings/update-data.php" method="post" enctype="multipart/form-data" id="myForm">
-    <?php
-    if (isset($_SESSION['message'])) {
-      echo "<p class='message'>" . $_SESSION['message'] . "</p>";
-      $_SESSION['message'] = "";
-    }
-    ?>
-    <div class="input-container">
-      <div class="fn">
-        <label for="fullname">Full name</label><br />
-        <input type="text" placeholder="Enter full name" name="fullname" id="fullname" value="<?php echo $employee['fullname']; ?>" required />
+      <div class="input-container">
+        <div class="fn">
+          <label for="fullname">Full name</label><br />
+          <input type="text" placeholder="Enter full name" name="fullname" id="fullname" value="<?php echo $employee['fullname']; ?>" required />
+        </div>
+        <div class="un">
+          <label for="username">User name</label><br />
+          <input type="text" placeholder="Enter username" name="username" id="username" value="<?php echo $employee['username']; ?>" required />
+        </div>
+        <div class="pwd">
+          <label for="password">Password</label><br />
+          <input type="password" placeholder="Enter new password" name="password" id="password" required />
+        </div>
+        <div class="email">
+          <label for="email">Email</label><br />
+          <input type="email" placeholder="Enter email" name="email" id="email" value="<?php echo $employee['email']; ?>" required />
+        </div>
+        <div class="contact">
+          <label for="contact">Contact Number</label><br />
+          <input type="text" placeholder="Enter contact number" name="contact_number" id="contact" value="<?php echo $employee['contact_number']; ?>" required />
+        </div>
+        <div class="address">
+          <label for="address">Address</label><br />
+          <input type="text" placeholder="Enter your address" name="address" id="address" value="<?php echo $employee['address']; ?>" required />
+        </div>
+        <div class="profile-picture">
+          <label for="profile_pic">Change Profile Picture</label><br />
+          <input type="file" name="profile_pic" id="profile_img" style="padding: 5px 10px;" />
+        </div>
       </div>
-      <div class="un">
-        <label for="username">User name</label><br />
-        <input type="text" placeholder="Enter username" name="username" id="username" value="<?php echo $employee['username']; ?>" required />
+      <div class="buttons">
+        <button class="update" type="submit">Update</button>
+        <button class="reset" type="reset">Reset</button>
       </div>
-      <div class="pwd">
-        <label for="password">Password</label><br />
-        <input type="password" placeholder="Enter new password" name="password" id="password" required />
-      </div>
-      <div class="email">
-        <label for="email">Email</label><br />
-        <input type="email" placeholder="Enter email" name="email" id="email" value="<?php echo $employee['email']; ?>" required />
-      </div>
-      <div class="contact">
-        <label for="contact">Contact Number</label><br />
-        <input type="text" placeholder="Enter contact number" name="contact_number" id="contact" value="<?php echo $employee['contact_number']; ?>" required />
-      </div>
-      <div class="address">
-        <label for="address">Address</label><br />
-        <input type="text" placeholder="Enter your address" name="address" id="address" value="<?php echo $employee['address']; ?>" required />
-      </div>
-      <div class="profile-picture">
-        <label for="profile_pic">Change Profile Picture</label><br />
-        <input type="file" name="profile_pic" id="profile_img" style="padding: 5px 10px;" />
-      </div>
-    </div>
-    <div class="buttons">
-      <button class="update" type="submit">Update</button>
-      <button class="reset" type="reset">Reset</button>
-    </div>
-  </form>
+    </form>
+  </main>
   <script>
     document.getElementById("profile_img").addEventListener("change", function() {
       var reader = new FileReader();

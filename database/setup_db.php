@@ -1,5 +1,4 @@
 <?php
-echo "" + password_hash("123456", PASSWORD_DEFAULT);
 $conn = mysqli_connect("localhost", "root", "") or die("Connection Failed: " . mysqli_connect_error());
 
 $sql = "CREATE DATABASE IF NOT EXISTS pharmacy_inventory";
@@ -50,24 +49,36 @@ $sql = "CREATE TABLE IF NOT EXISTS Employee (
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    address VARCHAR(255) ,
+    address VARCHAR(255),
     profile_pic BLOB DEFAULT NULL,
     status VARCHAR(50) DEFAULT 'INACTIVE'
 );";
 $conn->prepare($sql)->execute() or die("Error creating employee table: " . $conn->error);
 
+$sql = "CREATE TABLE IF NOT EXISTS Customer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fullname VARCHAR(255) NOT NULL,
+    contact_number VARCHAR(20),
+    email VARCHAR(255),
+    address VARCHAR(255)
+);";
+$conn->prepare($sql)->execute() or die("Error creating customer table: " . $conn->error);
+
 $sql = "CREATE TABLE IF NOT EXISTS Transaction (
     id INT AUTO_INCREMENT PRIMARY KEY,
     medication_id INT NOT NULL,
     employee_id INT NOT NULL,
-    transaction_Date TIMESTAMP,
+    customer_id INT DEFAULT NULL,
+    supplier_id INT DEFAULT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     quantity INT NOT NULL,
     transaction_type VARCHAR(50) NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (medication_id) REFERENCES Medication(id),
-    FOREIGN KEY (employee_id) REFERENCES Employee(id)
+    FOREIGN KEY (employee_id) REFERENCES Employee(id),
+    FOREIGN KEY (customer_id) REFERENCES Customer(id),
+    FOREIGN KEY (supplier_id) REFERENCES Supplier(id)
 );";
 $conn->prepare($sql)->execute() or die("Error creating transaction table: " . $conn->error);
 
-
-echo "Database setup successfull!";
+echo "Database setup successful!";

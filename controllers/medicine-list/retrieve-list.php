@@ -2,7 +2,7 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/database/setup_conn.php";
 
 $query = isset($_GET['query']) ? $_GET['query'] : '';
-$sql = "SELECT Medication.name, Category.name AS category_name, Medication.expiry_date, Medication.stock_quantity, Medication.unit_price
+$sql = "SELECT Medication.id, Medication.name, Category.name AS category_name, Medication.expiry_date, Medication.stock_quantity, Medication.unit_price
             FROM Medication
             JOIN Category ON Medication.category_id = Category.id
             WHERE Medication.stock_quantity > 0";
