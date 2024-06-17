@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+.active-nav {
+  background-color: #686c9c;
+  color: white;
+}
+
 .banner {
   background-color: #f8d7da;
   color: #721c24;

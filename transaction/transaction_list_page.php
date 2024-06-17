@@ -59,8 +59,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
                   <td class='list-cells'>" . $row['unit_price'] . "</td>
                   <td class='list-cells'>" . $row['transaction_date'] . "</td>
                   <td class='list-cells'>" . $row['transaction_type'] . "</td>
-                  <td class='action-btn' style='background-color: #55cc55'><a href='/pharma-suite/transaction/transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
-                  <td class='action-btn' style='background-color: #cc5555'><a href='/pharma-suite/transaction/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
+                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/transaction/transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
+                  <td><a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/transaction/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
               </tr>
           ";
         }
