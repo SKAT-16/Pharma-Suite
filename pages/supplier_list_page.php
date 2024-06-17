@@ -110,6 +110,7 @@ session_start();
         <td class="list-row1">Phone number</td>
         <td class="list-row1">Email</td>
         <td class="list-row1">Address</td>
+        <td class="list-row1">Actions</td>
       </tr>
       <?php
       foreach ($suppliers as $key => $row) {
@@ -120,6 +121,8 @@ session_start();
                   <td class='list-cells'>" . $row['contact_number'] . "</td>
                   <td class='list-cells'>" . $row['email'] . "</td>
                   <td class='list-cells'>" . $row['address'] . "</td>
+                  <td class='action-btn' style='background-color: #55cc55'><a href='/pharma-suite/pages/supplier_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
+                  <td class='action-btn' style='background-color: #cc5555'><a href='/pharma-suite/controllers/supplier-list/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
               </tr>
           ";
       }

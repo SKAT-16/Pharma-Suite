@@ -123,6 +123,7 @@ session_start();
         <td class="list-row1">Phone number</td>
         <td class="list-row1">Salary</td>
         <td class="list-row1">Status</td>
+        <td class="list-row1">Actions</td>
       </tr>
       <?php
       foreach ($employees as $key => $row) {
@@ -135,7 +136,9 @@ session_start();
                   <td class='list-cells'>" . $row['salary'] . " birr</td>
                   <td class='list-cells " . ($row['status'] == "INACTIVE" ? 'expired' : '') . "'>
                       " . $row['status'] . "
-                </tr>
+                  <td class='action-btn' style='background-color: #55cc55'><a href='/pharma-suite/pages/employee_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
+                  <td class='action-btn' style='background-color: #cc5555'><a href='/pharma-suite/controllers/employee-list/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
+                  </tr>
           ";
       }
       ?>

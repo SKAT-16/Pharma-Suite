@@ -123,8 +123,8 @@ session_start();
                   </td>
                   <td class='list-cells'>" . $row['stock_quantity'] . "</td>
                   <td class='list-cells'>" . $row['unit_price'] . "</td>
-                  <td class='action-btn'><a href='./medicine_sale_page.php'>Sale</a></td>
-                  <td class='action-btn' style='background-color: #55cc55'><a href='./medicine_sale_page.php?med=" . $row['id'] . "'>Edit</a></td>
+                  <td class='action-btn' style='background-color: #55cc55'><a href='/pharma-suite/pages/medicine_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
+                  <td class='action-btn' style='background-color: #cc5555'><a href='/pharma-suite/controllers/medicine-list/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
               </tr>
           ";
       }

@@ -112,7 +112,7 @@ session_start();
         <td class="list-row1">Unit Price</td>
         <td class="list-row1">Date</td>
         <td class="list-row1">Transaction Type</td>
-        <td class="list-row1">Action</td>
+        <td class="list-row1">Actions</td>
       </tr>
       <?php
       foreach ($transactions as $key => $row) {
@@ -125,8 +125,8 @@ session_start();
                   <td class='list-cells'>" . $row['unit_price'] . "</td>
                   <td class='list-cells'>" . $row['transaction_date'] . "</td>
                   <td class='list-cells'>" . $row['transaction_type'] . "</td>
-                  <td class='action-btn' style='background-color: #55cc55'><a href='./medicine_sale_page.php'>Edit</a></td>
-                  <td class='action-btn' style='background-color: #cc5555'><a href='./medicine_sale_page.php?med=" . $row['id'] . "'>Delete</a></td>
+                  <td class='action-btn' style='background-color: #55cc55'><a href='/pharma-suite/pages/transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
+                  <td class='action-btn' style='background-color: #cc5555'><a href='/pharma-suite/controllers/transaction-list/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
               </tr>
           ";
       }
