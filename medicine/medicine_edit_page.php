@@ -1,3 +1,4 @@
+<!-- name description manufacturer strength dosage_form expiry_date supplier_id category_id 	 -->
 <?php
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/medicine/controllers/edit-item.php";
@@ -34,19 +35,27 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
     </div>
   </header>
   <main class="addsupplier-main">
-    <h1 class="addsupplier-title">Edit medicine - <?php echo $medicine['name']; ?></h1>
-    <form>
-      <div>
-        <label for="name">Name <br>
-          <input type="text" id="name" class="addsupplier-input" value="" />
-        </label> <br>
-        <label for="name">Name
-          <input type="text" id="name" class="addsupplier-input" value="" />
-        </label>
-        <textarea cols="49" rows="10" id="description"></textarea>
-      </div>
+    <h1 class="addsupplier-title"><?php echo $medicine['name']; ?></h1>
+    <form action="/pharma-suite/medicine/controllers/edit-item.php" method="post">
+      <input type="hidden" name="medicine_id" value="<?php echo htmlspecialchars($medicine['id']); ?>">
+
+      <label for="name">Medicine Name:</label>
+      <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($medicine['name']); ?>" required><br>
+
+      <label for="category_id">Category ID:</label>
+      <input type="number" id="category_id" name="category_id" value="<?php echo htmlspecialchars($medicine['category_id']); ?>" required><br>
+
+      <label for="price">Price:</label>
+      <input type="number" step="0.01" id="price" name="price" value="<?php echo htmlspecialchars($medicine['price']); ?>" required><br>
+
+      <label for="stock">Stock:</label>
+      <input type="number" id="stock" name="stock" value="<?php echo htmlspecialchars($medicine['stock']); ?>" required><br>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required><?php echo htmlspecialchars($medicine['description']); ?></textarea><br>
+
       <div class="button-container">
-        <input type="submit" value="Save" id="save" />
+        <input type="submit" value="Update" id="save" />
         <input type="reset" value="Cancel" id="cancel" />
       </div>
     </form>

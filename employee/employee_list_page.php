@@ -71,8 +71,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
                   <td class='list-cells'>" . $row['salary'] . " birr</td>
                   <td class='list-cells " . ($row['status'] == "INACTIVE" ? 'expired' : '') . "'>
                       " . $row['status'] . "
-                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/employee/employee_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
-                  <td><a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/employee/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
+                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/employee/employee_edit_page.php?id=" . $row['id'] . "'>Edit</a>
+                  <a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/employee/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
                   </tr>
           ";
         }

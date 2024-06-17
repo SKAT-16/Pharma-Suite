@@ -2,6 +2,8 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/dashboard/controllers/retrieve-list.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +38,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.ph
 
 <body>
   <?php displaySideBar(); ?>
+  <?php displayBanner(); ?>
   <header>
     <div class="header-left">
       <input type="text" placeholder="Search for anything here." />
@@ -63,28 +66,28 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.ph
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
             <path d="M420-340h120v-100h100v-120H540v-100H420v100H320v120h100v100Zm60 260q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z" />
           </svg>
-          <p class="amount"><?php echo "$total_medicines_sold"; ?></p>
+          <p class="amount"><?php echo $total_medicines_sold; ?></p>
           <p class="activity">Medicine Sales today</p>
         </div>
         <div class="card">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
             <path d="M560-440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM280-320q-33 0-56.5-23.5T200-400v-320q0-33 23.5-56.5T280-800h560q33 0 56.5 23.5T920-720v320q0 33-23.5 56.5T840-320H280Zm80-80h400q0-33 23.5-56.5T840-480v-160q-33 0-56.5-23.5T760-720H360q0 33-23.5 56.5T280-640v160q33 0 56.5 23.5T360-400Zm440 240H120q-33 0-56.5-23.5T40-240v-440h80v440h680v80ZM280-400v-320 320Z" />
           </svg>
-          <p class="amount"><?php echo "$total_transactions"; ?></p>
+          <p class="amount"><?php echo $total_transactions; ?></p>
           <p class="activity">Transactions today</p>
         </div>
         <div class="card available">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
             <path d="M160-80q-33 0-56.5-23.5T80-160v-480q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v480q0 33-23.5 56.5T800-80H160Zm0-80h640v-480H160v480Zm240-560h160v-80H400v80ZM160-160v-480 480Zm280-200v120h80v-120h120v-80H520v-120h-80v120H320v80h120Z" />
           </svg>
-          <p class="amount"><?php echo "$available_medicines_count"; ?></p>
+          <p class="amount"><?php echo $available_medicines_count; ?></p>
           <p class="activity">Medicines avilable</p>
         </div>
         <div class="card error">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
           </svg>
-          <p class="amount"><?php echo "$expired_medicines_count"; ?></p>
+          <p class="amount"><?php echo $expired_medicines_count; ?></p>
           <p class="activity">Expired Medicine</p>
         </div>
       </div>
@@ -95,8 +98,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.ph
           <td colspan="2" class="row1">My Pharmacy</td>
         </tr>
         <tr>
-          <td class="amount"><?php echo "$total_suppliers"; ?></td>
-          <td class="amount"><?php echo "$total_employees"; ?></td>
+          <td class="amount"><?php echo $total_suppliers; ?></td>
+          <td class="amount"><?php echo $total_employees; ?></td>
         </tr>
         <tr>
           <td>Total number of suppliers</td>
@@ -108,8 +111,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.ph
           <td colspan="2" class="row1">Quick Report</td>
         </tr>
         <tr>
-          <td class="amount"><?php echo "$total_medicine_sold"; ?></td>
-          <td class="amount"><?php echo "$total_medicine_in_stock"; ?></td>
+          <td class="amount"><?php echo $total_medicine_sold; ?></td>
+          <td class="amount"><?php echo $total_medicine_in_stock; ?></td>
         </tr>
         <tr>
           <td>Total quantity of Medicine sold</td>

@@ -4,7 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/_database/setup_conn.php";
 // Medicine Sales Today (Total Number of Medicines Sold)
 $sql = "SELECT SUM(quantity) AS total_medicines_sold
         FROM Transaction
-        WHERE DATE(transaction_date) = CURDATE() AND transaction_type = 'SALE';";
+        WHERE DATE(transaction_date) = CURDATE();";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $total_medicines_sold = $row['total_medicines_sold'] ? $row['total_medicines_sold'] : 0;
@@ -49,8 +49,7 @@ $total_employees = $row['total_employees'];
 
 // Total Quantity of Medicine Sold
 $sql = "SELECT SUM(quantity) AS total_medicine_sold
-        FROM Transaction
-        WHERE transaction_type = 'SALE';";
+        FROM Transaction;";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $total_medicine_sold = $row['total_medicine_sold'] ? $row['total_medicine_sold'] : 0;

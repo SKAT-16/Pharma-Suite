@@ -37,12 +37,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
     <table cellspacing="3" class="list-table">
       <tr>
         <td class="list-row1">Medication</td>
+        <td class="list-row1">Supplier</td>
+        <td class="list-row1">Customer</td>
         <td class="list-row1">Employee</td>
-        <td class="list-row1">Customer/Supplier</td>
         <td class="list-row1">Quantity</td>
-        <td class="list-row1">Unit Price</td>
         <td class="list-row1">Date</td>
-        <td class="list-row1">Transaction Type</td>
         <td class="list-row1">Actions</td>
       </tr>
       <?php
@@ -53,14 +52,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
           echo "
               <tr class='list-row'>
                   <td class='list-cells'>" . $row['medication_name'] . "</td>
+                  <td class='list-cells'>" . $row['supplier_name'] . "</td>
+                  <td class='list-cells'>" . $row['customer_name'] . "</td>
                   <td class='list-cells'>" . $row['employee_name'] . "</td>
-                  <td class='list-cells'>" . ($row['customer_name'] != "" ? $row['customer_name'] : $row['supplier_name']) . "</td>
                   <td class='list-cells'>" . $row['quantity'] . "</td>
-                  <td class='list-cells'>" . $row['unit_price'] . "</td>
                   <td class='list-cells'>" . $row['transaction_date'] . "</td>
-                  <td class='list-cells'>" . $row['transaction_type'] . "</td>
-                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/transaction/transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
-                  <td><a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/transaction/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
+                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/transaction/transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a>
+                  <a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/transaction/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
               </tr>
           ";
         }

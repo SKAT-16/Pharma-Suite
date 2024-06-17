@@ -54,8 +54,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
                   <td class='list-cells'>" . $row['contact_number'] . "</td>
                   <td class='list-cells'>" . $row['email'] . "</td>
                   <td class='list-cells'>" . $row['address'] . "</td>
-                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/customer/customer_edit_page.php?id=" . $row['id'] . "'>Edit</a></td>
-                  <td><a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/customer/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
+                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/customer/customer_edit_page.php?id=" . $row['id'] . "'>Edit</a>
+                  <a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/customer/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
               </tr>
           ";
         }

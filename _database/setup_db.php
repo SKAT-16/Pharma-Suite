@@ -72,15 +72,11 @@ $sql = "CREATE TABLE IF NOT EXISTS Transaction (
     medication_id INT NOT NULL,
     employee_id INT NOT NULL,
     customer_id INT DEFAULT NULL,
-    supplier_id INT DEFAULT NULL,
     transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     quantity INT NOT NULL,
-    transaction_type VARCHAR(50) NOT NULL,
-    unit_price DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (medication_id) REFERENCES Medication(id),
     FOREIGN KEY (employee_id) REFERENCES Employee(id),
-    FOREIGN KEY (customer_id) REFERENCES Customer(id),
-    FOREIGN KEY (supplier_id) REFERENCES Supplier(id)
+    FOREIGN KEY (customer_id) REFERENCES Customer(id)
 );";
 $conn->prepare($sql)->execute() or die("Error creating transaction table: " . $conn->error);
 
