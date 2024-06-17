@@ -48,16 +48,16 @@ $conn->query($sql) or die("Error inserting data into Medication table: " . $conn
 // Insert mock data into Employee table with a default password 123456
 $default_passwd = "$2y$10$DZlnn72GPjwcTlE/CVBxn.X6iQI7WpoOnojsMZndP89Hl0xkVZeZS";
 $sql = "INSERT INTO Employee (fullname, position, contact_number, salary, username, email, password, address, profile_pic, status) VALUES
-    ('Alice Johnson', 'MANAGER', '111-222-3333', 55000.00, 'alice', 'alice@example.com', '$default_passwd', '123 Maple St', 'alice.jpg', 'ACTIVE'),
-    ('Bob Smith', 'EMPLOYEE', '222-333-4444', 45000.00, 'bob', 'bob@example.com', '$default_passwd', '456 Oak St', 'bob.jpg', 'ACTIVE'),
-    ('Carol White', 'EMPLOYEE', '333-444-5555', 35000.00, 'carol', 'carol@example.com', '$default_passwd', '789 Pine St', 'carol.jpg', 'ACTIVE'),
-    ('David Brown', 'EMPLOYEE', '444-555-6666', 47000.00, 'david', 'david@example.com', '$default_passwd', '101 Cedar St', 'david.jpg', 'INACTIVE'),
-    ('Eva Green', 'EMPLOYEE', '555-666-7777', 36000.00, 'eva', 'eva@example.com', '$default_passwd', '202 Birch St', 'eva.jpg', 'ACTIVE'),
-    ('Frank Miller', 'MANAGER', '666-777-8888', 60000.00, 'frank', 'frank@example.com', '$default_passwd', '303 Spruce St', 'frank.jpg', 'INACTIVE'),
-    ('Grace Lee', 'EMPLOYEE', '777-888-9999', 48000.00, 'grace', 'grace@example.com', '$default_passwd', '404 Willow St', 'grace.jpg', 'ACTIVE'),
-    ('Hannah Davis', 'EMPLOYEE', '888-999-0000', 37000.00, 'hannah', 'hannah@example.com', '$default_passwd', '505 Elm St', 'hannah.jpg', 'ACTIVE'),
-    ('Ivan Wilson', 'EMPLOYEE', '999-000-1111', 49000.00, 'ivan', 'ivan@example.com', '$default_passwd', '606 Pine St', 'ivan.jpg', 'INACTIVE'),
-    ('Jackie Chan', 'EMPLOYEE', '000-111-2222', 38000.00, 'jackie', 'jackie@example.com', '$default_passwd', '707 Cedar St', 'jackie.jpg', 'ACTIVE')";
+    ('Alice Johnson', 'MANAGER', '111-222-3333', 55000.00, 'alice', 'alice@example.com', '$default_passwd', '123 Maple St', NULL, 'ACTIVE'),
+    ('Bob Smith', 'EMPLOYEE', '222-333-4444', 45000.00, 'bob', 'bob@example.com', '$default_passwd', '456 Oak St', NULL, 'ACTIVE'),
+    ('Carol White', 'EMPLOYEE', '333-444-5555', 35000.00, 'carol', 'carol@example.com', '$default_passwd', '789 Pine St', NULL, 'ACTIVE'),
+    ('David Brown', 'EMPLOYEE', '444-555-6666', 47000.00, 'david', 'david@example.com', '$default_passwd', '101 Cedar St', NULL, 'INACTIVE'),
+    ('Eva Green', 'EMPLOYEE', '555-666-7777', 36000.00, 'eva', 'eva@example.com', '$default_passwd', '202 Birch St', NULL, 'ACTIVE'),
+    ('Frank Miller', 'MANAGER', '666-777-8888', 60000.00, 'frank', 'frank@example.com', '$default_passwd', '303 Spruce St', NULL, 'INACTIVE'),
+    ('Grace Lee', 'EMPLOYEE', '777-888-9999', 48000.00, 'grace', 'grace@example.com', '$default_passwd', '404 Willow St', NULL, 'ACTIVE'),
+    ('Hannah Davis', 'EMPLOYEE', '888-999-0000', 37000.00, 'hannah', 'hannah@example.com', '$default_passwd', '505 Elm St', NULL, 'ACTIVE'),
+    ('Ivan Wilson', 'EMPLOYEE', '999-000-1111', 49000.00, 'ivan', 'ivan@example.com', '$default_passwd', '606 Pine St', NULL, 'INACTIVE'),
+    ('Jackie Chan', 'EMPLOYEE', '000-111-2222', 38000.00, 'jackie', 'jackie@example.com', '$default_passwd', '707 Cedar St', NULL, 'ACTIVE')";
 $conn->query($sql) or die("Error inserting data into Employee table: " . $conn->error);
 
 // Insert mock data into Transaction table
