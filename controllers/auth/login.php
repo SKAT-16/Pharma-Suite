@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
   $password = $_POST['password'];
 
   // Check if user exists and password is correct
-  $sql = "SELECT id, password FROM Employee WHERE username = ?;";
+  $sql = "SELECT id, fullname, position, password FROM Employee WHERE username = ?;";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("s", $username);
   $stmt->execute() or die("Error: " . $sql . "<br>" . $conn->error);
@@ -18,6 +18,8 @@ if (isset($_POST['login'])) {
     $row = $result->fetch_assoc();
     if (password_verify($password, $row['password'])) {
       $_SESSION['emp_id'] = $row['id'];
+      $_SESSION['fullname'] = $row['fullname'];
+      $_SESSION['postion'] = $row['position'];
       header("Location: /pharma-suite/pages/dashboard_page.php");
       exit();
     }
