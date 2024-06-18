@@ -35,12 +35,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
         </svg>
       </button>
     </form>
-    <div class="header-right">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-      </svg>
-      <div class="count">01</div>
-    </div>
   </header>
   <main>
     <div class="category-title">Category</div>
@@ -48,29 +42,29 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
       <?php
       foreach ($categories as $key => $row) {
         echo "
-        <div class='card'>
+        <a href='/pharma-suite/category/category_edit_page.php?id=" . $row['id'] . "' class='card'>
           <div class='card-title'>" . $row['name'] . "</div>
           <div class='card-description'>
             " . $row['description'] . "
           </div>
-        <div class='card-more'>
-          <div class='store'>" . $row['medicine_count'] . " in store</div>
-          <div class='view-more-icon'>
-            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' class='size-6' style='width: 16px; height: 16px'>
-              <path stroke-linecap='round' stroke-linejoin='round' d='m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5' />
-            </svg>
+          <div class='card-more'>
+            <div class='store'>" . $row['medicine_count'] . " in store</div>
+            <div class='view-more-icon'>
+              <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' class='size-6' style='width: 16px; height: 16px'>
+                <path stroke-linecap='round' stroke-linejoin='round' d='m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5' />
+              </svg>
+            </div>
           </div>
-        </div>
-      </div>";
+      </a>";
       }
       ?>
-      <div class="card">
+      <a href="/pharma-suite/category/category_add_page.php" class="card">
         <div class="plus">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c2cde1" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
         </div>
-      </div>
+      </a>
     </div>
   </main>
   <script>

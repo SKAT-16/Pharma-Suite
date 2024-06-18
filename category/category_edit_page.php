@@ -1,5 +1,6 @@
 <?php
 session_start();
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/category/controllers/edit-item.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
 ?>
@@ -31,6 +32,17 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
       margin-left: 32px;
     }
 
+    .input-container textarea {
+      padding: 20px 30px;
+      font-family: "Poppins", sans-serif;
+      background-color: #b5bcc5;
+      opacity: 49%;
+
+      border: none;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
     .input-container>div {
       flex-basis: 48%;
       margin-bottom: 10px;
@@ -45,17 +57,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
       border: none;
       height: 40px;
       width: 300px;
-      border-radius: 10px;
-      margin-top: 5px;
-    }
-
-    .input-container textarea {
-      padding: 20px 30px;
-      font-family: "Poppins", sans-serif;
-      background-color: #b5bcc5;
-      opacity: 49%;
-
-      border: none;
       border-radius: 10px;
       margin-top: 5px;
     }
@@ -112,6 +113,19 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
       margin-top: 20px;
       gap: 30px;
     }
+
+    .delete-btn {
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 3px solid #1d242e;
+      color: white;
+      box-shadow: 0 8px 21px rgba(0, 0, 0, 16%);
+      transition: ease 0.3s;
+      width: 100px;
+      text-align: center;
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -129,21 +143,23 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
     </div>
   </header>
   <main>
-    <h1>New Category</h1>
-    <form action="/pharma-suite/category/controllers/add-item.php" method="post" id="myForm">
+    <h1><?php echo $category['name']; ?></h1>
+    <form action="/pharma-suite/category/controllers/edit-item.php" method="post" id="myForm">
       <div class="input-container">
+        <input type="hidden" name="id" value="<?php echo $category['id']; ?>" />
         <div>
           <label for="name">Name</label><br />
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" value="<?php echo $category['name']; ?>" />
         </div>
         <div>
           <label for="description">Description</label><br />
-          <textarea name="description" cols="30" rows="10" id="description"></textarea>
+          <textarea name="description" cols="30" rows="10" id="description"><?php echo $category['description']; ?></textarea>
         </div>
       </div>
       <div class="buttons">
-        <button class="update" type="submit">Add</button>
+        <button class="update" type="submit">Update</button>
         <button class="reset" type="reset">Reset</button>
+        <?php echo "<a style='background-color: #cc5555' class='delete-btn' href='./controllers/delete-item.php?id=" . $category['id'] . "' onclick='return confirmDelete(" . $row['stock_quantity'] . ")'>Delete</a>" ?>
       </div>
     </form>
     <script>
