@@ -40,9 +40,12 @@ function displaySideBar()
       </a>
 
       <a href='/pharma-suite/employee/employee_list_page.php' class='nav-box " . (strpos($url, "employee") ? "active-nav" : "")  . "'>
-        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
-          <path stroke-linecap='round' stroke-linejoin='round' d='M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z' />
-        </svg>
+      <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+      <path d='M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+      <path d='M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+      <path d='M23 21V19C22.9993 18.1172 22.7044 17.2522 22.1614 16.5385C21.6184 15.8248 20.8581 15.3029 20 15' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+      <path d='M16 3.13C16.8604 3.4134 17.623 3.93799 18.1676 4.63569C18.7122 5.33338 19.0212 6.17419 19.0712 7.05213C19.1213 7.93007 18.9102 8.80104 18.4507 9.55576C17.9912 10.3105 17.3096 10.9132 16.5 11.28' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+      </svg>
         <div>Employees</div>
       </a>
 

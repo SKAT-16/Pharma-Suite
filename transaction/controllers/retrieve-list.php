@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/_database/setup_conn.php";
 
 $query = isset($_GET['query']) ? $_GET['query'] : '';
 
-$sql = "SELECT Transaction.id, Medication.name AS medication_name, Employee.fullname AS employee_name, Customer.fullname AS customer_name, Supplier.name AS supplier_name, Transaction.transaction_date, Transaction.quantity
+$sql = "SELECT Transaction.id, Medication.name AS medication_name, Medication.unit_price, Employee.fullname AS employee_name, Customer.fullname AS customer_name, Supplier.name AS supplier_name, Transaction.transaction_date, Transaction.quantity
         FROM Transaction
         LEFT JOIN Medication ON Transaction.medication_id = Medication.id
         LEFT JOIN Employee ON Transaction.employee_id = Employee.id
@@ -31,7 +31,7 @@ if (!empty($conditions)) {
   $sql .= " WHERE " . implode(" OR ", $conditions);
 }
 
-$sql .= " ORDER BY Transaction.transaction_date";
+$sql .= " ORDER BY Transaction.transaction_date DESC";
 
 $stmt = $conn->prepare($sql);
 

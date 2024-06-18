@@ -32,6 +32,14 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
         </svg>
       </button>
     </form>
+
+    <div class="header-right">
+      <a href="/pharma-suite/transaction/transaction_add_page.php" class="add-btn">
+        <svg class="add-icon" viewBox="0 0 24 24">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        </svg>
+      </a>
+    </div>
   </header>
   <main class="list-main">
     <table cellspacing="3" class="list-table">
@@ -41,6 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
         <td class="list-row1">Customer</td>
         <td class="list-row1">Employee</td>
         <td class="list-row1">Quantity</td>
+        <td class="list-row1">Total Price</td>
         <td class="list-row1">Date</td>
         <td class="list-row1">Actions</td>
       </tr>
@@ -56,9 +65,12 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
                   <td class='list-cells'>" . $row['customer_name'] . "</td>
                   <td class='list-cells'>" . $row['employee_name'] . "</td>
                   <td class='list-cells'>" . $row['quantity'] . "</td>
-                  <td class='list-cells'>" . $row['transaction_date'] . "</td>
-                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/transaction/transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a>
-                  <a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/transaction/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
+                  <td class='list-cells'>" . ($row['quantity'] * $row['unit_price']) . " birr</td>
+                  <td class='list-cells'>" . date('Y-m-d', strtotime($row['transaction_date'])) . "</td>
+                  <td>
+                    <a style='background-color: #55cc55' class='action-btn' href='./transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a>
+                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete(" . $row['stock_quantity'] . ")'>Delete</a>
+                  </td>
               </tr>
           ";
         }
@@ -67,6 +79,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
   </main>
 
   <script>
+    function confirmDelete(stockCount) {
+      return confirm("The transaction contains important data on the medicine sold.\n\n\tAre you sure about this action?");
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       var banner = document.getElementById("banner");
       if (banner) {
