@@ -60,6 +60,28 @@ header {
   margin-right: 35px;
 }
 
+.header-right .add-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #a1a1a1;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.header-right .add-btn:hover {
+  background-color: #aaaaaa;
+}
+
+.header-right .add-icon {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
 .count {
   background-color: red;
   display: absolute;

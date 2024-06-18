@@ -20,6 +20,8 @@ if (!empty($query)) {
     $types = str_repeat('s', count($params)); // 's' for string type for all LIKE comparisons
 }
 
+$sql .= " ORDER BY Supplier.name";
+
 $stmt = $conn->prepare($sql);
 
 if (!empty($params)) {

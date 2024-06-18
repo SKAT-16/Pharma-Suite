@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/medicine/controllers/edit-item.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/medicine/controllers/add-item.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
 ?>
@@ -118,51 +118,47 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
     </div>
   </header>
   <main>
-    <h1><?php echo $medicine['name']; ?></h1>
-    <form action="/pharma-suite/medicine/controllers/edit-item.php" method="post" id="myForm">
+    <h1>New Medicine</h1>
+    <form action="/pharma-suite/medicine/controllers/add-item.php" method="post" id="myForm">
       <div class="input-container">
-        <input type="hidden" name="id" value="<?php echo $medicine['id']; ?>" />
         <div>
           <label for="name">Medicine Name</label><br />
-          <input type="text" name="name" id="name" value="<?php echo $medicine['name']; ?>" required />
+          <input type="text" name="name" id="name" />
         </div>
         <div>
           <label for="description">Description</label><br />
-          <input type="text" name="description" id="description" value="<?php echo $medicine['description']; ?>" required />
+          <input type="text" name="description" id="description" />
         </div>
         <div>
           <label for="manufacturer">Manufacturer</label><br />
-          <input type="text" name="manufacturer" id="manufacturer" value="<?php echo $medicine['manufacturer']; ?>" required />
+          <input type="text" name="manufacturer" id="manufacturer" />
         </div>
         <div>
           <label for="strength">Strength</label><br />
-          <input type="text" name="strength" id="strength" value="<?php echo $medicine['strength']; ?>" required />
+          <input type="text" name="strength" id="strength" />
         </div>
         <div>
           <label for="dosage_form">Dosage Form</label><br />
-          <input type="text" name="dosage_form" id="dosage_form" value="<?php echo $medicine['dosage_form']; ?>" required />
+          <input type="text" name="dosage_form" id="dosage_form" />
         </div>
         <div>
           <label for="expiry_date">Expiry Date</label><br />
-          <input type="date" name="expiry_date" id="expiry_date" value="<?php echo $medicine['expiry_date']; ?>" required />
+          <input type="date" name="expiry_date" id="expiry_date" />
         </div>
         <div>
           <label for="stock">Stock Quantity</label><br />
-          <input type="number" name="stock_quantity" id="stock" value="<?php echo $medicine['stock_quantity']; ?>" required />
+          <input type="number" name="stock_quantity" id="stock" />
         </div>
         <div>
           <label for="unit_price">Unit Price</label><br />
-          <input step="0.01" type="number" name="unit_price" id="unit_price" value="<?php echo $medicine['unit_price']; ?>" required />
+          <input step="0.01" type="number" name="unit_price" id="unit_price" ?>
         </div>
         <div>
           <label for="category_id">Category</label><br />
           <select name="category_id" id="">
             <?php
             foreach ($categories as $key => $row) {
-              if ($row['id'] == $medicine['category_id']) {
-                echo "<option value=" . $row['id'] . " selected>" . $row['name'] . "</option>";
-              } else
-                echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+              echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
             }
             ?>
           </select>
@@ -172,17 +168,14 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
           <select name="supplier_id" id="">
             <?php
             foreach ($suppliers as $key => $row) {
-              if ($row['id'] == $medicine['supplier_id']) {
-                echo "<option value=" . $row['id'] . " selected>" . $row['name'] . "</option>";
-              } else
-                echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+              echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
             }
             ?>
           </select>
         </div>
       </div>
       <div class="buttons">
-        <button class="update" type="submit">Update</button>
+        <button class="update" type="submit">Add</button>
         <button class="reset" type="reset">Reset</button>
       </div>
     </form>

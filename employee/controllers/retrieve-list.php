@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/_database/setup_conn.php";
 
 $query = isset($_GET['query']) ? $_GET['query'] : '';
 
-$sql = "SELECT id, fullname, position, email, contact_number, salary, status
+$sql = "SELECT id, fullname, position, email, contact_number, address, salary, status
         FROM Employee";
 
 $params = [];
@@ -15,11 +15,14 @@ if (!empty($query)) {
               OR position LIKE ?
               OR email LIKE ?
               OR contact_number LIKE ?
+              OR address LIKE ?
               OR salary LIKE ?
               OR status LIKE ?";
-    $params = [$query, $query, $query, $query, $query, $query];
-    $types = str_repeat('s', count($params)); // 's' for string type for all LIKE comparisons
+    $params = [$query, $query, $query, $query, $query, $query, $query];
+    $types = str_repeat('s', count($params));
 }
+
+$sql .= " ORDER BY Employee.fullname";
 
 $stmt = $conn->prepare($sql);
 

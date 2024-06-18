@@ -19,6 +19,7 @@ if (!empty($query)) {
 }
 
 $sql .= " GROUP BY Category.id, Category.name, Category.description";
+$sql .= " ORDER BY Category.name";
 
 $stmt = $conn->prepare($sql);
 

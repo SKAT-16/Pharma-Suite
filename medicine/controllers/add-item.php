@@ -3,8 +3,6 @@ session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/_database/setup_conn.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  $medicine_id = $_GET['id'];
-  // Fetch categories from the database
   $sql = "SELECT id, name FROM Category";
   $result = $conn->query($sql);
   $categories = [];
@@ -23,23 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $suppliers[] = $row;
     }
   }
-
-
-  // Fetch the existing details of the medicine
-  $sql = "SELECT * FROM Medication WHERE id = ?";
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param("i", $medicine_id);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $medicine = $result->fetch_assoc();
-
-  if (!$medicine) {
-    $_SESSION['message'] = "Medicine not found";
-    header("Location: /pharma-suite/medicine/medicine_list_page.php");
-    exit();
-  }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $medicine_id = $_POST['id'];
   $name = $_POST['name'];
   $description = $_POST['description'];
   $manufacturer = $_POST['manufacturer'];
@@ -50,15 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $unit_price = $_POST['unit_price'];
   $category_id = $_POST['category_id'];
   $supplier_id = $_POST['supplier_id'];
-  $sql = "UPDATE Medication SET name = ?, description = ?, manufacturer = ?, strength = ?, dosage_form = ?, expiry_date = ?, stock_quantity = ?, unit_price = ?, category_id = ?, supplier_id = ? WHERE id = ?";
+
+  $sql = "INSERT INTO Medication (name, description, manufacturer, strength, dosage_form, expiry_date, stock_quantity, unit_price, category_id, supplier_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("ssssssidiii", $name, $description, $manufacturer, $strength, $dosage_form, $expiry_date, $stock_quantity, $unit_price, $category_id, $supplier_id, $medicine_id);
+  $stmt->bind_param("ssssssidii", $name, $description, $manufacturer, $strength, $dosage_form, $expiry_date, $stock_quantity, $unit_price, $category_id, $supplier_id);
   $stmt->execute();
-  echo "here";
+
   $stmt->close();
   $conn->close();
 
-  $_SESSION['message'] = "Medicine updated successfully";
+  $_SESSION['message'] = "New medicine added successfully";
   header("Location: /pharma-suite/medicine/medicine_list_page.php");
   exit();
 }

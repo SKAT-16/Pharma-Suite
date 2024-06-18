@@ -57,9 +57,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   // Update the employee data in the database
-  $sql = "UPDATE Employee SET fullname = ?, contact_number = ?, username = ?, email = ?, password = ?, address = ?, profile_pic = ? WHERE id = ?";
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param("sssssssi", $fullname, $contact_number, $username, $email, $password, $address, $profile_pic, $employee_id);
+  if (!empty($password)) {
+    $sql = "UPDATE Employee SET fullname = ?, contact_number = ?, username = ?, email = ?, password = ?, address = ?, profile_pic = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssssi", $fullname, $contact_number, $username, $email, $password, $address, $profile_pic, $employee_id);
+  } else {
+    $sql = "UPDATE Employee SET fullname = ?, contact_number = ?, username = ?, email = ?, address = ?, profile_pic = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssssi", $fullname, $contact_number, $username, $email, $address, $profile_pic, $employee_id);
+  }
   $stmt->execute();
   $stmt->close();
 

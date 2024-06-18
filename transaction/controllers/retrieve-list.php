@@ -31,6 +31,8 @@ if (!empty($conditions)) {
   $sql .= " WHERE " . implode(" OR ", $conditions);
 }
 
+$sql .= " ORDER BY Transaction.transaction_date";
+
 $stmt = $conn->prepare($sql);
 
 if (!empty($params)) {

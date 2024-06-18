@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/medicine/controllers/edit-item.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/supplier/controllers/edit-item.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
 ?>
@@ -118,67 +118,29 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
     </div>
   </header>
   <main>
-    <h1><?php echo $medicine['name']; ?></h1>
-    <form action="/pharma-suite/medicine/controllers/edit-item.php" method="post" id="myForm">
+    <h1><?php echo $supplier['name']; ?></h1>
+    <form action="/pharma-suite/supplier/controllers/edit-item.php" method="post" id="myForm">
       <div class="input-container">
-        <input type="hidden" name="id" value="<?php echo $medicine['id']; ?>" />
+        <input type="hidden" name="id" value="<?php echo $supplier['id']; ?>" />
         <div>
-          <label for="name">Medicine Name</label><br />
-          <input type="text" name="name" id="name" value="<?php echo $medicine['name']; ?>" required />
+          <label for="name">Supplier Name</label><br />
+          <input type="text" name="name" id="name" value="<?php echo $supplier['name'] ?>" required />
         </div>
         <div>
-          <label for="description">Description</label><br />
-          <input type="text" name="description" id="description" value="<?php echo $medicine['description']; ?>" required />
+          <label for="contact_name">Contact Person Name</label><br />
+          <input type="text" name="contact_name" id="contact_name" value="<?php echo $supplier['contact_person_name'] ?>" required />
         </div>
         <div>
-          <label for="manufacturer">Manufacturer</label><br />
-          <input type="text" name="manufacturer" id="manufacturer" value="<?php echo $medicine['manufacturer']; ?>" required />
+          <label for="contact_number">Contact Number</label><br />
+          <input type="text" name="contact_number" id="contact_number" value="<?php echo $supplier['contact_number'] ?>" required />
         </div>
         <div>
-          <label for="strength">Strength</label><br />
-          <input type="text" name="strength" id="strength" value="<?php echo $medicine['strength']; ?>" required />
+          <label for="email">Email</label><br />
+          <input type="text" name="email" id="email" value="<?php echo $supplier['email'] ?>" required />
         </div>
         <div>
-          <label for="dosage_form">Dosage Form</label><br />
-          <input type="text" name="dosage_form" id="dosage_form" value="<?php echo $medicine['dosage_form']; ?>" required />
-        </div>
-        <div>
-          <label for="expiry_date">Expiry Date</label><br />
-          <input type="date" name="expiry_date" id="expiry_date" value="<?php echo $medicine['expiry_date']; ?>" required />
-        </div>
-        <div>
-          <label for="stock">Stock Quantity</label><br />
-          <input type="number" name="stock_quantity" id="stock" value="<?php echo $medicine['stock_quantity']; ?>" required />
-        </div>
-        <div>
-          <label for="unit_price">Unit Price</label><br />
-          <input step="0.01" type="number" name="unit_price" id="unit_price" value="<?php echo $medicine['unit_price']; ?>" required />
-        </div>
-        <div>
-          <label for="category_id">Category</label><br />
-          <select name="category_id" id="">
-            <?php
-            foreach ($categories as $key => $row) {
-              if ($row['id'] == $medicine['category_id']) {
-                echo "<option value=" . $row['id'] . " selected>" . $row['name'] . "</option>";
-              } else
-                echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
-            }
-            ?>
-          </select>
-        </div>
-        <div>
-          <label for="supplier_id">Supplier</label><br />
-          <select name="supplier_id" id="">
-            <?php
-            foreach ($suppliers as $key => $row) {
-              if ($row['id'] == $medicine['supplier_id']) {
-                echo "<option value=" . $row['id'] . " selected>" . $row['name'] . "</option>";
-              } else
-                echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
-            }
-            ?>
-          </select>
+          <label for="address">Address</label><br />
+          <input type="text" name="address" id="address" value="<?php echo $supplier['address'] ?>" required />
         </div>
       </div>
       <div class="buttons">

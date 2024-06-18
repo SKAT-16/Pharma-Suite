@@ -97,8 +97,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
           <input type="text" placeholder="Enter username" name="username" id="username" value="<?php echo $employee['username']; ?>" required />
         </div>
         <div class="pwd">
-          <label for="password">Password</label><br />
-          <input type="password" placeholder="Enter new password" name="password" id="password" required />
+          <label for="password">Password*(Not required)</label><br />
+          <input type="password" placeholder="Enter new password" name="password" id="password" />
         </div>
         <div class="email">
           <label for="email">Email</label><br />

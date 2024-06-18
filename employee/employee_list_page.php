@@ -33,26 +33,22 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
         </svg>
       </button>
     </form>
-    <div class="list-header-right">
-      <div class="filter">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+
+    <div class="header-right">
+      <a href="/pharma-suite/employee/employee_add_page.php" class="add-btn">
+        <svg class="add-icon" viewBox="0 0 24 24">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
         </svg>
-      </div>
-      <div class="menu">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
-        </svg>
-      </div>
+      </a>
     </div>
   </header>
   <main class="list-main">
     <table cellspacing="3" class="list-table">
       <tr>
         <td class="list-row1">Name</td>
-        <td class="list-row1">Position</td>
         <td class="list-row1">Email</td>
         <td class="list-row1">Phone number</td>
+        <td class="list-row1">Address</td>
         <td class="list-row1">Salary</td>
         <td class="list-row1">Status</td>
         <td class="list-row1">Actions</td>
@@ -65,21 +61,27 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
           echo "
               <tr class='list-row'>
                   <td class='list-cells'>" . $row['fullname'] . "</td>
-                  <td class='list-cells'>" . $row['position'] . "</td>
                   <td class='list-cells'>" . $row['email'] . "</td>
                   <td class='list-cells'>" . $row['contact_number'] . "</td>
+                  <td class='list-cells'>" . $row['address'] . "</td>
                   <td class='list-cells'>" . $row['salary'] . " birr</td>
                   <td class='list-cells " . ($row['status'] == "INACTIVE" ? 'expired' : '') . "'>
                       " . $row['status'] . "
-                  <td><a class='action-btn' style='background-color: #55cc55' href='/pharma-suite/employee/employee_edit_page.php?id=" . $row['id'] . "'>Edit</a>
-                  <a class='action-btn' style='background-color: #cc5555' href='/pharma-suite/employee/controllers/delete-item.php?id=" . $row['id'] . "'>Delete</a></td>
-                  </tr>
+                  <td>
+                    <a style='background-color: #55cc55' class='action-btn' href='./employee_edit_page.php?id=" . $row['id'] . "'>Edit</a>
+                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete(" . $row['stock_quantity'] . ")'>Delete</a>
+                  </td>
+                </tr>
           ";
         }
       ?>
     </table>
   </main>
   <script>
+    function confirmDelete(stockCount) {
+      return confirm("The employee and the associated transactions he/she made will be deleted.\n\n\t Are you sure about this action?");
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       var banner = document.getElementById("banner");
       if (banner) {
