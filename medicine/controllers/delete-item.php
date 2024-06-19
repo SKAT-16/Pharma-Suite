@@ -30,12 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 
   // Redirect to a page (e.g., the medicine list page)
+  $conn->close();
   header("Location: /pharma-suite/medicine/medicine_list_page.php");
   exit();
 } else {
   $_SESSION['message'] = "Invalid request method.";
+  $conn->close();
   header("Location: /pharma-suite/medicine/medicine_list_page.php");
   exit();
 }
-
-$conn->close();

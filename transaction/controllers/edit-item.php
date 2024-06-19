@@ -46,11 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!$transaction) {
       $_SESSION['message'] = "Transaction not found";
+      $conn->close();
       header("Location: /pharma-suite/transaction/transaction_list_page.php");
       exit();
     }
   } else {
     $_SESSION['message'] = "Invalid transaction ID.";
+    $conn->close();
     header("Location: /pharma-suite/transaction/transaction_list_page.php");
     exit();
   }

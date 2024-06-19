@@ -1,8 +1,8 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/setting/controllers/retrieve-data.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
+include "./controllers/retrieve-data.php";
+include "../assets/components/side-bar.php";
+include "../assets/components/banner.php";
 ?>
 
 <!DOCTYPE html>

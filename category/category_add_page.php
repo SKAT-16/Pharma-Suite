@@ -1,7 +1,7 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
+include "../assets/components/side-bar.php";
+include "../assets/components/banner.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,11 +134,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
       <div class="input-container">
         <div>
           <label for="name">Name</label><br />
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" required />
         </div>
         <div>
           <label for="description">Description</label><br />
-          <textarea name="description" cols="30" rows="10" id="description"></textarea>
+          <textarea name="description" cols="30" rows="10" id="description" required></textarea>
         </div>
       </div>
       <div class="buttons">

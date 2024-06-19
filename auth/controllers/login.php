@@ -20,6 +20,7 @@ if (isset($_POST['login'])) {
       $_SESSION['emp_id'] = $row['id'];
       $_SESSION['fullname'] = $row['fullname'];
       $_SESSION['postion'] = $row['position'];
+      $conn->close();
       header("Location: /pharma-suite/dashboard/dashboard_page.php");
       exit();
     }
@@ -27,5 +28,7 @@ if (isset($_POST['login'])) {
 
   // Redirect to login page with error message
   $_SESSION['message'] = 'Invalid username or password';
+  $conn->close();
   header("Location: /pharma-suite/auth/login_page.php");
+  exit();
 }

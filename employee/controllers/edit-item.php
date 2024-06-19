@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   if (!$employee) {
     $_SESSION['message'] = "Employee not found";
+    $conn->close();
     header("Location: /pharma-suite/employee/employee_list_page.php");
     exit();
   }

@@ -34,11 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   // Redirect to a page (e.g., the category list page)
   header("Location: /pharma-suite/category/category_list_page.php");
+  $conn->close();
   exit();
 } else {
   $_SESSION['message'] = "Invalid request method.";
   header("Location: /pharma-suite/category/category_list_page.php");
+  $conn->close();
   exit();
 }
-
-$conn->close();

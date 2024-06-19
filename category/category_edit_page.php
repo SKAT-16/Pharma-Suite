@@ -1,8 +1,8 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/category/controllers/edit-item.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
+include "./controllers/edit-item.php";
+include "../assets/components/side-bar.php";
+include "../assets/components/banner.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,11 +149,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
         <input type="hidden" name="id" value="<?php echo $category['id']; ?>" />
         <div>
           <label for="name">Name</label><br />
-          <input type="text" name="name" id="name" value="<?php echo $category['name']; ?>" />
+          <input type="text" name="name" id="name" value="<?php echo $category['name']; ?>" required />
         </div>
         <div>
           <label for="description">Description</label><br />
-          <textarea name="description" cols="30" rows="10" id="description"><?php echo $category['description']; ?></textarea>
+          <textarea name="description" cols="30" rows="10" id="description" required><?php echo $category['description']; ?></textarea>
         </div>
       </div>
       <div class="buttons">

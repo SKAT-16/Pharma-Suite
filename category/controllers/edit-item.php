@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!$category) {
       $_SESSION['message'] = "Category not found.";
+      $conn->close();
       header("Location: /pharma-suite/category/category_list_page.php");
       exit();
     }

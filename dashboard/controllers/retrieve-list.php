@@ -41,11 +41,11 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $total_suppliers = $row['total_suppliers'];
 
-// Total Number of Employees
-$sql = "SELECT COUNT(*) AS total_employees FROM Employee;";
+// Total Number of Customers
+$sql = "SELECT COUNT(*) AS total_customers FROM Customer;";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-$total_employees = $row['total_employees'];
+$total_customers = $row['total_customers'];
 
 // Total Quantity of Medicine Sold
 $sql = "SELECT SUM(quantity) AS total_medicine_sold

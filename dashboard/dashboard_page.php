@@ -1,9 +1,8 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/dashboard/controllers/retrieve-list.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/side-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
-
+include "./controllers/retrieve-list.php";
+include "../assets/components/side-bar.php";
+include "../assets/components/banner.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,11 +98,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php"
         </tr>
         <tr>
           <td class="amount"><?php echo $total_suppliers; ?></td>
-          <td class="amount"><?php echo $total_employees; ?></td>
+          <td class="amount"><?php echo $total_customers; ?></td>
         </tr>
         <tr>
           <td>Total number of suppliers</td>
-          <td>Total number of employees</td>
+          <td>Total number of customers</td>
         </tr>
       </table>
       <table class="dashboard-table">

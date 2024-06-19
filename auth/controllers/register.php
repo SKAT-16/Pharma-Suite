@@ -13,6 +13,7 @@ if (isset($_POST['register'])) {
   // Check if passwords match
   if ($password != $confirm_password) {
     $_SESSION['message'] = 'Passwords do not match';
+    $conn->close();
     header("Location: /pharma-suite/auth/register_page.php");
     exit();
   }
@@ -26,6 +27,7 @@ if (isset($_POST['register'])) {
   $result = $stmt->get_result();
   if ($result->num_rows > 0) {
     $_SESSION['message'] = 'Username already taken';
+    $conn->close();
     header("Location: /pharma-suite/auth/register_page.php");
     exit();
   }
@@ -45,5 +47,7 @@ if (isset($_POST['register'])) {
 
   $row = $result->fetch_assoc();
   $_SESSION['emp_id'] = $row['id'];
+  $conn->close();
   header("Location: /pharma-suite/dashboard/dashboard_page.php");
+  exit();
 }

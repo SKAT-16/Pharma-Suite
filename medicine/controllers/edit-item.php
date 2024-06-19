@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   if (!$medicine) {
     $_SESSION['message'] = "Medicine not found";
+    $conn->close();
     header("Location: /pharma-suite/medicine/medicine_list_page.php");
     exit();
   }

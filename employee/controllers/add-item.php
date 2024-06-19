@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if ($row['count'] > 0) {
     $_SESSION['message'] = "Username already in use.";
+    $conn->close();
     header("Location: /pharma-suite/employee/employee_add_page.php");
     exit();
   }

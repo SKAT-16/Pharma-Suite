@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $stmt->execute();
   $stmt->close();
 
-  header("Location: /pharma-suite/setting/setting_page.php");
   $conn->close();
+  header("Location: /pharma-suite/setting/setting_page.php");
   exit();
 }

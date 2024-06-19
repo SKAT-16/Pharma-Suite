@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!$customer) {
       $_SESSION['message'] = "Customer not found.";
+      $conn->close();
       header("Location: /pharma-suite/customer/customer_list_page.php");
       exit();
     }

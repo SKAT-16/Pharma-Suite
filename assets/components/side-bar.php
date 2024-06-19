@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['emp_id'])) {
+  $_SESSION['message'] = "You must log in first!";
+  header('Location: /pharma-suite/auth/login_page.php');
+  exit();
+}
+
 function displaySideBar()
 {
   $url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -37,18 +44,19 @@ function displaySideBar()
           <path stroke-linecap='round' stroke-linejoin='round' d='M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z' />
         </svg>
         <div>Suppliers</div>
-      </a>
-
+      </a>";
+  if (strtoupper($_SESSION['position']) == 'MANAGER')
+    echo "
       <a href='/pharma-suite/employee/employee_list_page.php' class='nav-box " . (strpos($url, "employee") ? "active-nav" : "")  . "'>
-      <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <path d='M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
-      <path d='M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
-      <path d='M23 21V19C22.9993 18.1172 22.7044 17.2522 22.1614 16.5385C21.6184 15.8248 20.8581 15.3029 20 15' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
-      <path d='M16 3.13C16.8604 3.4134 17.623 3.93799 18.1676 4.63569C18.7122 5.33338 19.0212 6.17419 19.0712 7.05213C19.1213 7.93007 18.9102 8.80104 18.4507 9.55576C17.9912 10.3105 17.3096 10.9132 16.5 11.28' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
-      </svg>
+        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <path d='M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+          <path d='M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+          <path d='M23 21V19C22.9993 18.1172 22.7044 17.2522 22.1614 16.5385C21.6184 15.8248 20.8581 15.3029 20 15' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+          <path d='M16 3.13C16.8604 3.4134 17.623 3.93799 18.1676 4.63569C18.7122 5.33338 19.0212 6.17419 19.0712 7.05213C19.1213 7.93007 18.9102 8.80104 18.4507 9.55576C17.9912 10.3105 17.3096 10.9132 16.5 11.28' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg>
         <div>Employees</div>
-      </a>
-
+      </a> ";
+  echo "
       <a href='/pharma-suite/transaction/transaction_list_page.php' class='nav-box " . (strpos($url, "transaction") ? "active-nav" : "")  . "'>
         <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'>
           <path stroke-linecap='round' stroke-linejoin='round' d='M15 13.5H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z' />

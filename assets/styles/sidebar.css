@@ -1,7 +1,7 @@
 nav {
   width: 20%;
-  overflow: auto;
   height: 100vh;
+  overflow: hidden;
   background-color: #2b2d42;
   color: white;
   display: inline-block;
@@ -10,7 +10,6 @@ nav {
 .nav-box {
   text-decoration: none;
   display: flex;
-  width: 216px;
   align-items: center;
   padding: 15px 20px;
   font-size: 14px;

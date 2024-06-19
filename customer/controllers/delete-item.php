@@ -29,13 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $_SESSION['message'] = "Invalid customer ID.";
   }
 
-  // Redirect to a page (e.g., the customer list page)
+  $conn->close();
   header("Location: /pharma-suite/customer/customer_list_page.php");
   exit();
 } else {
   $_SESSION['message'] = "Invalid request method.";
+  $conn->close();
   header("Location: /pharma-suite/customer/customer_list_page.php");
   exit();
 }
-
-$conn->close();
