@@ -113,7 +113,8 @@ main {
 
 .list-row:hover {
   scale: 1.03;
-  color: #7a8495;
+  color: black;
+  font-weight: 700;
 }
 
 .action-btn a,
@@ -205,7 +206,7 @@ textarea {
 }
 
 table {
-  width: 90%;
+  width: 98%;
   border-collapse: collapse;
 }
 

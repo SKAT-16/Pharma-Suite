@@ -1,29 +1,15 @@
 header {
   background-color: #f7fafd;
-  height: 60px;
+  padding: 10px 0;
   display: flex;
   align-items: center;
   position: fixed;
   justify-content: space-between;
   z-index: 2;
-  right: 0;
   left: 17%;
-  top: 0;
-}
-
-.banner {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  left: 0;
   right: 0;
-  z-index: 1000;
-  display: none;
+  top: 0;
 }
-
 
 .header-left button {
   background-color: #edf2f4;
@@ -45,6 +31,41 @@ header {
   background-color: #edf2f4;
   border: none;
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  header {
+    left: 17%;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    left: 25%;
+  }
+
+  .header-left input {
+    width: 100px;
+    margin: 0 10px;
+  }
+
+  .header-left input {
+    width: 200px;
+  }
+
+  .header-right .add-btn {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  header {
+    left: 38%;
+    flex-direction: column;
+  }
+}
+
 
 .header-left input::placeholder {
   font-size: 12px;
