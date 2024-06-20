@@ -84,7 +84,7 @@ include "../assets/components/banner.php";
     </table>
   </main>
   <script>
-    function confirmDelete(stockCount) {
+    function confirmDelete() {
       return confirm("The supplier, the medicines supplied and the transactions associated with those medicines will be deleted.\n\n\t Are you sure about this action?");
     }
 

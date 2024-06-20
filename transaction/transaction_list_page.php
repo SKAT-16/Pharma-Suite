@@ -80,7 +80,7 @@ include "../assets/components/banner.php";
             echo "
                   <td>
                     <a style='background-color: #55cc55' class='action-btn' href='./transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a>
-                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete(" . $row['stock_quantity'] . ")'>Delete</a>
+                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete()'>Delete</a>
                   </td>
                   ";
           echo "
@@ -92,7 +92,7 @@ include "../assets/components/banner.php";
   </main>
 
   <script>
-    function confirmDelete(stockCount) {
+    function confirmDelete() {
       return confirm("The transaction contains important data on the medicine sold.\n\n\tAre you sure about this action?");
     }
 

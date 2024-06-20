@@ -158,6 +158,13 @@ include "../assets/components/banner.php";
           <label for="salary">Salary</label><br />
           <input step="0.01" type="number" name="salary" id="salary" required />
         </div>
+        <div>
+          <label for="position">Position</label><br />
+          <select name="position" id="">
+            <option selected value="Pharmacist">Pharmacist</option>
+            <option selected value="Cashier">Cashier</option>
+          </select>
+        </div>
       </div>
       <div class="buttons">
         <button class="update" type="submit">Add</button>

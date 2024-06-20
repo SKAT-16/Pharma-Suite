@@ -73,7 +73,7 @@ include "../assets/components/banner.php";
                       " . $row['status'] . "
                   <td>
                     <a style='background-color: #55cc55' class='action-btn' href='./employee_edit_page.php?id=" . $row['id'] . "'>Edit</a>
-                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete(" . $row['stock_quantity'] . ")'>Delete</a>
+                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete()'>Delete</a>
                   </td>
                 </tr>
           ";
@@ -82,7 +82,7 @@ include "../assets/components/banner.php";
     </table>
   </main>
   <script>
-    function confirmDelete(stockCount) {
+    function confirmDelete() {
       return confirm("The employee and the associated transactions he/she made will be deleted.\n\n\t Are you sure about this action?");
     }
 

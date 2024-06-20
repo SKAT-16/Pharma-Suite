@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
   $address = $_POST['address'];
   $status = $_POST['status'];
+  $position = $_POST['position'];
 
   // Check if the username already exists
   $sql = "SELECT COUNT(*) as count FROM Employee WHERE username = ?";
@@ -27,12 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
   }
 
-  echo ("ssdsssss" . $fullname . " . " . $contact_number . $salary . $username . $email . $password . $address . $status);
   // Insert the new employee
-  $sql = "INSERT INTO Employee (fullname, contact_number, salary, username, email, password, address, status)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+  $sql = "INSERT INTO Employee (fullname, position, contact_number, salary, username, email, password, address, status)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("ssdsssss", $fullname, $contact_number, $salary, $username, $email, $password, $address, $status);
+  $stmt->bind_param("sssdsssss", $fullname, $position, $contact_number, $salary, $username, $email, $password, $address, $status);
   $stmt->execute();
 
 

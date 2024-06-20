@@ -167,6 +167,23 @@ include "../assets/components/banner.php";
           <label for="salary">Salary</label><br />
           <input step="0.01" type="number" name="salary" id="salary" value="<?php echo $employee['salary']; ?>" required />
         </div>
+        <div>
+          <label for="position">Position</label><br />
+          <select name="position" id="">
+            <?php
+            if ($employee['position'] == "Pharmacist")
+              echo '
+                  <option selected value="Pharmacist">Pharmacist</option>
+                  <option value="Cashier">Cashier</option>
+                ';
+            else
+              echo '
+                  <option value="Pharmacist">Pharmacist</option>
+                  <option selected value="Cashier">Cashier</option>
+                ';
+            ?>
+          </select>
+        </div>
       </div>
       <div class="buttons">
         <button class="update" type="submit">Update</button>

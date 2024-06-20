@@ -66,7 +66,7 @@ include "../assets/components/banner.php";
                   <td class='list-cells'>" . $row['address'] . "</td>
                   <td>
                     <a style='background-color: #55cc55' class='action-btn' href='./customer_edit_page.php?id=" . $row['id'] . "'>Edit</a>
-                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete(" . $row['stock_quantity'] . ")'>Delete</a>
+                    <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete()'>Delete</a>
                   </td>
               </tr>
           ";
@@ -75,7 +75,7 @@ include "../assets/components/banner.php";
     </table>
   </main>
   <script>
-    function confirmDelete(stockCount) {
+    function confirmDelete() {
       return confirm("The customer and the associated transactions will be deleted.\n\n\t Are you sure about this action?");
     }
 

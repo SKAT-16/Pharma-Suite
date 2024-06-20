@@ -30,17 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $password = $_POST['password'];
   $address = $_POST['address'];
   $status = $_POST['status'];
+  $position = $_POST['position'];
 
   // Prepare SQL for updating the employee
   if (!empty($password)) {
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-    $sql = "UPDATE Employee SET fullname = ?, contact_number = ?, salary = ?, username = ?, email = ?, password = ?, address = ?, status = ? WHERE id = ?";
+    $sql = "UPDATE Employee SET fullname = ?, position = ?, contact_number = ?, salary = ?, username = ?, email = ?, password = ?, address = ?, status = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssdsssssi", $fullname, $contact_number, $salary, $username, $email, $hashed_password, $address, $status, $employee_id);
+    $stmt->bind_param("sssdsssssi", $fullname, $position, $contact_number, $salary, $username, $email, $hashed_password, $address, $status, $employee_id);
   } else {
-    $sql = "UPDATE Employee SET fullname = ?, contact_number = ?, salary = ?, username = ?, email = ?, address = ?, status = ? WHERE id = ?";
+    $sql = "UPDATE Employee SET fullname = ?, position = ?, contact_number = ?, salary = ?, username = ?, email = ?, address = ?, status = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssdssssi", $fullname, $contact_number, $salary, $username, $email, $address, $status, $employee_id);
+    $stmt->bind_param("sssdssssi", $fullname, $position, $contact_number, $salary, $username, $email, $address, $status, $employee_id);
   }
 
   $stmt->execute();
