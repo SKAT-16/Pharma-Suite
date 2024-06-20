@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $contact_number = $_POST['contact_number'];
   $username = $_POST['username'];
   $email = $_POST['email'];
-  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : "";
   $address = $_POST['address'];
 
   // Handle image upload
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } else {
     $sql = "UPDATE Employee SET fullname = ?, contact_number = ?, username = ?, email = ?, address = ?, profile_pic = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssi", $fullname, $contact_number, $username, $email, $address, $profile_pic, $employee_id);
+    $stmt->bind_param("ssssssi", $fullname, $contact_number, $username, $email, $address, $profile_pic, $employee_id);
   }
   $stmt->execute();
   $stmt->close();

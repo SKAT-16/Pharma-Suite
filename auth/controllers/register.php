@@ -2,7 +2,7 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/_database/setup_conn.php";
 session_start();
 
-if (isset($_POST['register'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Get form data
   $fullname = $_POST['fullname'];
   $username = $_POST['username'];
