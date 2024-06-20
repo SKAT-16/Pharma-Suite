@@ -1,5 +1,4 @@
 <?php
-session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/_database/setup_conn.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {

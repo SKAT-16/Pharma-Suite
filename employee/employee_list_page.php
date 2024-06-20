@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 include "./controllers/retrieve-list.php";
 include "../assets/components/side-bar.php";
 include "../assets/components/banner.php";
@@ -50,6 +52,7 @@ include "../assets/components/banner.php";
         <td class="list-row1">Phone number</td>
         <td class="list-row1">Address</td>
         <td class="list-row1">Salary</td>
+        <td class="list-row1">Position</td>
         <td class="list-row1">Status</td>
         <td class="list-row1">Actions</td>
       </tr>
@@ -65,6 +68,7 @@ include "../assets/components/banner.php";
                   <td class='list-cells'>" . $row['contact_number'] . "</td>
                   <td class='list-cells'>" . $row['address'] . "</td>
                   <td class='list-cells'>" . $row['salary'] . " birr</td>
+                  <td class='list-cells'>" . $row['position'] . "</td>
                   <td class='list-cells " . ($row['status'] == "INACTIVE" ? 'expired' : '') . "'>
                       " . $row['status'] . "
                   <td>

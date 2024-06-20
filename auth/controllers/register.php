@@ -1,6 +1,5 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/_database/setup_conn.php";
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Get form data
@@ -48,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $row = $result->fetch_assoc();
   $_SESSION['emp_id'] = $row['id'];
   $_SESSION['fullname'] = $row['fullname'];
-  $_SESSION['postion'] = $row['position'];
+  $_SESSION['position'] = $row['position'];
   $conn->close();
   header("Location: /pharma-suite/dashboard/dashboard_page.php");
   exit();

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 include "./controllers/edit-item.php";
 include "../assets/components/side-bar.php";
 include "../assets/components/banner.php";

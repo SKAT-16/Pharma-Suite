@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!isset($_SESSION['emp_id'])) {
   $_SESSION['message'] = "You must log in first!";
   header('Location: /pharma-suite/auth/login_page.php');
@@ -20,7 +19,7 @@ function displaySideBar()
         </svg>
         <div>
           <div>" . $_SESSION['fullname'] . " </div>
-          <div class='admin'> " . strtolower($_SESSION['postion']) . "</div>
+          <div class='admin'> " . strtolower($_SESSION['position']) . "</div>
         </div>
       </div>
     </div>

@@ -48,11 +48,11 @@ $sql = "INSERT INTO Employee (fullname, position, contact_number, salary, userna
     ('John Doe', 'Manager', '1234567890', 60000.00, 'johndoe', 'john@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '123 Main St, City', NULL, 'ACTIVE'),
     ('Jane Smith', 'Pharmacist', '0987654321', 55000.00, 'janesmith', 'jane@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '456 Oak St, City', NULL, 'ACTIVE'),
     ('Alice Johnson', 'Cashier', '1122334455', 30000.00, 'alicejohnson', 'alice@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '789 Pine St, City', NULL, 'INACTIVE'),
-    ('Bob Brown', 'Technician', '6677889900', 40000.00, 'bobbrown', 'bob@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '101 Maple St, City', NULL, 'ACTIVE'),
+    ('Bob Brown', 'Pharmacist', '6677889900', 40000.00, 'bobbrown', 'bob@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '101 Maple St, City', NULL, 'ACTIVE'),
     ('Charlie Green', 'Manager', '2233445566', 62000.00, 'charliegreen', 'charlie@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '202 Elm St, City', NULL, 'ACTIVE'),
     ('David Black', 'Pharmacist', '3344556677', 56000.00, 'davidblack', 'david@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '303 Cedar St, City', NULL, 'INACTIVE'),
     ('Eve White', 'Cashier', '4455667788', 31000.00, 'evewhite', 'eve@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '404 Birch St, City', NULL, 'ACTIVE'),
-    ('Frank Blue', 'Technician', '5566778899', 42000.00, 'frankblue', 'frank@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '505 Spruce St, City', NULL, 'ACTIVE'),
+    ('Frank Blue', 'Pharmacist', '5566778899', 42000.00, 'frankblue', 'frank@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '505 Spruce St, City', NULL, 'ACTIVE'),
     ('Grace Yellow', 'Pharmacist', '6677889900', 57000.00, 'graceyellow', 'grace@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '606 Fir St, City', NULL, 'ACTIVE'),
     ('Hank Red', 'Cashier', '7788990011', 32000.00, 'hankred', 'hank@example.com', '" . password_hash('1', PASSWORD_DEFAULT) . "', '707 Ash St, City', NULL, 'INACTIVE')";
 $conn->prepare($sql)->execute() or die("Error inserting data into employee table: " . $conn->error);

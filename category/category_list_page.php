@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 include "./controllers/retrieve-list.php";
 include "../assets/components/side-bar.php";
 include "../assets/components/banner.php";
@@ -41,8 +43,14 @@ include "../assets/components/banner.php";
     <div class="card-table">
       <?php
       foreach ($categories as $key => $row) {
+        if (strtoupper($_SESSION['position']) != "CASHIER")
+          echo "
+          <a href='/pharma-suite/category/category_edit_page.php?id=" . $row['id'] . "' class='card'> ";
+        else
+          echo "
+          <a class='card'> ";
+
         echo "
-        <a href='/pharma-suite/category/category_edit_page.php?id=" . $row['id'] . "' class='card'>
           <div class='card-title'>" . $row['name'] . "</div>
           <div class='card-description'>
             " . $row['description'] . "
@@ -57,14 +65,16 @@ include "../assets/components/banner.php";
           </div>
       </a>";
       }
+
+      if (strtoupper($_SESSION['position']) != "CASHIER")
+        echo "<a href='/pharma-suite/category/category_add_page.php' class='card'>
+                <div class='plus'>
+                  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='#c2cde1' class='size-6'>
+                    <path stroke-linecap='round' stroke-linejoin='round' d='M12 4.5v15m7.5-7.5h-15' />
+                  </svg>
+                </div>
+              </a>";
       ?>
-      <a href="/pharma-suite/category/category_add_page.php" class="card">
-        <div class="plus">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c2cde1" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
-        </div>
-      </a>
     </div>
   </main>
   <script>

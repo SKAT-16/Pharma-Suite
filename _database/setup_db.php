@@ -46,7 +46,7 @@ $conn->prepare($sql)->execute() or die("Error creating medication table: " . $co
 $sql = "CREATE TABLE IF NOT EXISTS Employee (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(255) NOT NULL,
-    position VARCHAR(20) DEFAULT 'EMPLOYEE',
+    position VARCHAR(20),
     contact_number VARCHAR(20),
     salary DECIMAL(10, 2),
     username VARCHAR(255) NOT NULL UNIQUE,

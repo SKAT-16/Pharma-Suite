@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 include $_SERVER['DOCUMENT_ROOT'] . "/pharma-suite/assets/components/banner.php";
 ?>
 <!DOCTYPE html>
