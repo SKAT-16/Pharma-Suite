@@ -47,6 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $row = $result->fetch_assoc();
   $_SESSION['emp_id'] = $row['id'];
+  $_SESSION['fullname'] = $row['fullname'];
+  $_SESSION['postion'] = $row['position'];
   $conn->close();
   header("Location: /pharma-suite/dashboard/dashboard_page.php");
   exit();

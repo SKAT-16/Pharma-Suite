@@ -5,3 +5,6 @@
   <li>Run /pharma-suite/_database/setup_mock_data.php to Create some data for logging in and working with the inventory</li>
   <li>Go to /pharma-suite which is the landing page</li>
 </ol>
+
+<h3>Hosted on Infinityfree</h3>
+<p>Link: <a href="http://pharmacy-inventory.free.nf/pharma-suite/">Pharma-Suite</a></p>

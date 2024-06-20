@@ -1,7 +1,8 @@
 nav {
   width: 20%;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-color: #2b2d42;
   color: white;
   display: inline-block;
