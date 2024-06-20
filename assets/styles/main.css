@@ -112,9 +112,8 @@ main {
 }
 
 .list-row:hover {
-  scale: 1.03;
-  color: black;
-  font-weight: 700;
+  scale: 1.01;
+  color: #7a8495;
 }
 
 .action-btn a,
@@ -223,7 +222,7 @@ th {
 
 td,
 th {
-  padding: 6px;
+  padding: 2px 6px;
   border: 1px solid #ccc;
   text-align: left;
 }
