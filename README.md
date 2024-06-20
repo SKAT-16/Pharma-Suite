@@ -6,5 +6,5 @@
   <li>Go to /pharma-suite which is the landing page</li>
 </ol>
 
-<h3>Hosted on Infinityfree</h3>
+<h3>Hosted on 000Webhost</h3>
 <p>Link: <a href="https://pharma-suite.000webhostapp.com/pharma-suite/">Pharma-Suite</a></p>
