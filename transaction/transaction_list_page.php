@@ -20,6 +20,7 @@ include "../assets/components/banner.php";
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  <script src="/pharma-suite/assets/js/jspdf.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -67,7 +68,7 @@ include "../assets/components/banner.php";
       else
         foreach ($transactions as $key => $row) {
           echo "
-              <tr class='list-row'>
+              <tr class='list-row' id='tr" . $row['id'] . "'>
                   <td class='list-cells'>" . $row['medication_name'] . "</td>
                   <td class='list-cells'>" . $row['supplier_name'] . "</td>
                   <td class='list-cells'>" . $row['customer_name'] . "</td>
@@ -81,6 +82,7 @@ include "../assets/components/banner.php";
                   <td>
                     <a style='background-color: #55cc55' class='action-btn' href='./transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a>
                     <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete()'>Delete</a>
+                    <button style='background-color: #5555cc' class='action-btn' onclick='return printTransaction(" . $row['id'] . ")'>Print</button>
                   </td>
                   ";
           echo "
@@ -92,6 +94,70 @@ include "../assets/components/banner.php";
   </main>
 
   <script>
+    function printTransaction(rowID) {
+      const doc = new jsPDF();
+
+      // Capture the transaction details
+      const transactionDetails = document.getElementById("tr" + rowID);
+      const transactionID = rowID;
+      const medicineSold = transactionDetails.children[0].textContent;
+      const supplier = transactionDetails.children[1].textContent;
+      const customer = transactionDetails.children[2].textContent;
+      const employee = transactionDetails.children[3].textContent;
+      const quantity = transactionDetails.children[4].textContent;
+      const totalPrice = transactionDetails.children[5].textContent;
+      const date = transactionDetails.children[6].textContent;
+
+      // Add the transaction details to the PDF with formatting
+      doc.setFontSize(18);
+      doc.text('Transaction Receipt', 105, 20, null, null, 'center');
+
+      doc.setFontSize(12);
+      doc.text('----------------------------------------', 10, 30);
+      doc.text('Transaction ID: ' + transactionID, 10, 40);
+      doc.text('----------------------------------------', 10, 50);
+
+      doc.setFontSize(14);
+      doc.text('Medicine Sold:', 10, 60);
+      doc.setFontSize(12);
+      doc.text(medicineSold, 60, 60);
+
+      doc.setFontSize(14);
+      doc.text('Supplier:', 10, 70);
+      doc.setFontSize(12);
+      doc.text(supplier, 60, 70);
+
+      doc.setFontSize(14);
+      doc.text('Customer:', 10, 80);
+      doc.setFontSize(12);
+      doc.text(customer, 60, 80);
+
+      doc.setFontSize(14);
+      doc.text('Employee:', 10, 90);
+      doc.setFontSize(12);
+      doc.text(employee, 60, 90);
+
+      doc.setFontSize(14);
+      doc.text('Quantity:', 10, 100);
+      doc.setFontSize(12);
+      doc.text(quantity, 60, 100);
+
+      doc.setFontSize(14);
+      doc.text('Total Price:', 10, 110);
+      doc.setFontSize(12);
+      doc.text(totalPrice, 60, 110);
+
+      doc.setFontSize(14);
+      doc.text('Date:', 10, 120);
+      doc.setFontSize(12);
+      doc.text(date, 60, 120);
+
+      doc.text('----------------------------------------', 10, 130);
+
+      // Save the PDF
+      doc.save("transaction-" + transactionID + "(" + date + ").pdf");
+    }
+
     function confirmDelete() {
       return confirm("The transaction contains important data on the medicine sold.\n\n\tAre you sure about this action?");
     }
