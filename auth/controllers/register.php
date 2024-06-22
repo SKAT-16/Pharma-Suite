@@ -32,23 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Insert user into database
-  $sql = "INSERT INTO Employee(fullname, username, email, password) VALUES(?,?,?,?);";
+  $sql = "INSERT INTO Employee(fullname, username, email, password, position) VALUES(?,?,?,?,'Unassigned');";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("ssss", $fullname, $username, $email, $password);
   $stmt->execute() or die("Error: " . $sql . "<br>" . $conn->error);
 
-  // Set session variables
-  $sql = "SELECT id FROM Employee WHERE username = ?;";
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param("s", $username);
-  $stmt->execute() or die("Error: " . $sql . "<br>" . $conn->error);
-  $result = $stmt->get_result();
 
-  $row = $result->fetch_assoc();
-  $_SESSION['emp_id'] = $row['id'];
-  $_SESSION['fullname'] = $row['fullname'];
-  $_SESSION['position'] = $row['position'];
+  $_SESSION['message'] = 'You need verification by the Manager after registration!';
   $conn->close();
-  header("Location: /pharma-suite/dashboard/dashboard_page.php");
+  header("Location: /pharma-suite/auth/login_page.php");
   exit();
 }
