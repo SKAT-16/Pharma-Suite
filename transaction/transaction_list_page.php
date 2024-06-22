@@ -80,9 +80,9 @@ include "../assets/components/banner.php";
           if (strtoupper($_SESSION['position']) != "PHARMACIST")
             echo "
                   <td>
+                    <button style='background-color: #5555cc' class='action-btn' onclick='return printTransaction(" . $row['id'] . ")'>Print</button>
                     <a style='background-color: #55cc55' class='action-btn' href='./transaction_edit_page.php?id=" . $row['id'] . "'>Edit</a>
                     <a style='background-color: #cc5555' class='action-btn' href='./controllers/delete-item.php?id=" . $row['id'] . "' onclick='return confirmDelete()'>Delete</a>
-                    <button style='background-color: #5555cc' class='action-btn' onclick='return printTransaction(" . $row['id'] . ")'>Print</button>
                   </td>
                   ";
           echo "
